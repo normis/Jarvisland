@@ -1,0 +1,11 @@
+== Aide == 
+
+Nord                    Aller au nord
+Sud                     Aller au sud
+Est                     Aller à l'est
+Ouest                   Aller à l'ouest
+Voir                    Inspecter la pièce
+Inventaire              Afficher l'inventaire
+Ouvrir (item)           Ouvrir un item 
+Prendre (item)          Ajouter un item dans l'inventaire
+Utiliser (item) (obj)   Utiliser un item sur un objet
