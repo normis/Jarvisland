@@ -1,7 +1,7 @@
 package org.jarvisland.level;
 
 /**
- * Une exception qui déclanche la fin d'un niveau
+ * Une exception qui d√©clanche la fin d'un niveau
  * 
  * @author niclupien
  *

@@ -12,13 +12,13 @@ import org.jarvisland.levels.room.RoomNotAccessibleException;
 /**
  * Moteur du jeu Jarvisland
  * 
- * Il faut simplement instancier la classe et le jeu démarre.
+ * Il faut simplement instancier la classe et le jeu d√©marre.
  * 
- * LevelManager : gère les niveaux
- * InventoryManager : gère l'inventaire
+ * LevelManager : g√®re les niveaux
+ * InventoryManager : g√®re l'inventaire
  * 
  * Le moteur fait le lien entre les commandes du joueur
- * et les différents Manager de Jarvisland
+ * et les diff√©rents Manager de Jarvisland
  * 
  * @author niclupien
  *
@@ -26,14 +26,14 @@ import org.jarvisland.levels.room.RoomNotAccessibleException;
 public class JarvislandEngine {
 	
 	/**
-	 * Le constructeur prend en paramètre une pièce de départ
+	 * Le constructeur prend en param√®tre une pi√®ce de d√©part
 	 * et la charge.
 	 * 
 	 * @param startRoom
 	 */
 	public JarvislandEngine() {
 		System.out.println("=====================================");
-		System.out.println("Bienvenue à Jarvisland!");
+		System.out.println("Bienvenue √† Jarvisland!");
 		System.out.println("Entrez 'aide' pour voir les commandes");
 		System.out.println("=====================================");
 		System.out.println();
@@ -46,7 +46,7 @@ public class JarvislandEngine {
 	 * Affiche une phrase au joueur.
 	 * 
 	 * La fonction renvoie aussi un nouveau prompt lorsque le message
-	 * a été envoyé.
+	 * a √©t√© envoy√©.
 	 * 
 	 * @param s
 	 */
@@ -58,7 +58,7 @@ public class JarvislandEngine {
 	/**
 	 * Demande le input du joueur
 	 * 
-	 * Le input est ensuite traité par la pièce (room) en cours.
+	 * Le input est ensuite trait√© par la pi√®ce (room) en cours.
 	 */
 	private void prompt() {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -74,7 +74,7 @@ public class JarvislandEngine {
 	}
 	
 	/**
-	 * Execute une commande entrée par le joueur.
+	 * Execute une commande entr√©e par le joueur.
 	 * 
 	 * @param commande
 	 */
@@ -98,7 +98,7 @@ public class JarvislandEngine {
 	}
 	
 	/**
-	 * Vérifie si le niveau est complété. S'il l'est, on charge
+	 * V√©rifie si le niveau est compl√©t√©. S'il l'est, on charge
 	 * le prochain niveau.
 	 * 
 	 * @return completed
@@ -121,7 +121,7 @@ public class JarvislandEngine {
 	}
 
 	/**
-	 * Permet au joueur de se déplacer.
+	 * Permet au joueur de se d√©placer.
 	 * 
 	 * @param direction
 	 */

@@ -4,8 +4,8 @@ import org.jarvisland.level.AbstractLevel;
 import org.jarvisland.level.LevelEndedException;
 
 /**
- * Le level 0 est un petit niveau tutoriel qui ne possède
- * qu'une seule pièce avec un seul objectif : en sortir. 
+ * Le level 0 est un petit niveau tutoriel qui ne poss√®de
+ * qu'une seule pi√®ce avec un seul objectif : en sortir. 
  * 
  * @author niclupien
  *

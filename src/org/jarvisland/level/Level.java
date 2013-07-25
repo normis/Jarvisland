@@ -3,28 +3,28 @@ package org.jarvisland.level;
 import org.jarvisland.levels.room.RoomNotAccessibleException;
 
 /**
- * Level - Regroupement de pièces (Room) qui forme une map.
+ * Level - Regroupement de pi√®ces (Room) qui forme une map.
  * 
- * Le niveau fait le lien entre les entrées traitées par JarvislandEngine
- * et pièces d'un niveau du jeu.
+ * Le niveau fait le lien entre les entr√©es trait√©es par JarvislandEngine
+ * et pi√®ces d'un niveau du jeu.
  * 
- * Un niveau contient des objectifs déclancher par des actions du joueur
- * dans des pièces.
+ * Un niveau contient des objectifs d√©clancher par des actions du joueur
+ * dans des pi√®ces.
  * 
- * Lorsque tous les objectifs sont terminés, on peut changer de niveau
+ * Lorsque tous les objectifs sont termin√©s, on peut changer de niveau
  * 
  * @author niclupien
  *
  */
 public interface Level {
 	/**
-	 * Définit si le niveau est terminé
+	 * D√©finit si le niveau est termin√©
 	 * @return isCompleted
 	 */
 	public boolean isCompleted();
 	
 	/**
-	 * Déplacement dans une direction donnée
+	 * D√©placement dans une direction donn√©e
 	 * 
 	 * @param direction
 	 * @throws RoomNotAccessibleException
@@ -35,20 +35,20 @@ public interface Level {
 	 * Traitement d'une commande
 	 * 
 	 * @param commande
-	 * @return résultat
+	 * @return r√©sultat
 	 */
 	public String execute(String commande);
 	
 	/**
-	 * Description de la pièce
+	 * Description de la pi√®ce
 	 * 
 	 * @return description
 	 */
 	public String look();
 	
 	/**
-	 * Traitement d'événement qui se passe dans le niveau comme
-	 * par exemple, le déclanchement de la complétion d'un objectif.
+	 * Traitement d'√©v√©nement qui se passe dans le niveau comme
+	 * par exemple, le d√©clanchement de la compl√©tion d'un objectif.
 	 * 
 	 * @param event
 	 */

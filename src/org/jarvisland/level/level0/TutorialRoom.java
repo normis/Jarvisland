@@ -8,10 +8,10 @@ import org.jarvisland.levels.room.RoomNotAccessibleException;
 
 
 /**
- * La pièce tutoriel du niveau 0
+ * La pi√®ce tutoriel du niveau 0
  * 
- * Il faut ouvrir un coffre, prendre la clé, utiliser la clé
- * sur la porte et sortir de la pièce. 
+ * Il faut ouvrir un coffre, prendre la cl√©, utiliser la cl√©
+ * sur la porte et sortir de la pi√®ce. 
  * 
  * @author niclupien
  *
@@ -23,19 +23,19 @@ public class TutorialRoom extends AbstractRoom {
 	public String execute(String s) {
 		if (s.matches("OUVRIR.* COFFRE")) {
 			if (coffreOuvert)
-				return "Le coffre est déjà ouvert.";
+				return "Le coffre est d√©j√† ouvert.";
 			
 			coffreOuvert = true;
-			return "Le coffre s'ouvre et un épais nuage de poussière en sort. Il y a une clé dans le fond.";
-		} else if (s.matches("PRENDRE.* CLÉ")) {
-			if (coffreOuvert && !InventoryManager.getInstance().hasItem("Clé")) {
-				InventoryManager.getInstance().addItem("Clé");
-				return "Vous ramassez une clé.";
+			return "Le coffre s'ouvre et un √©pais nuage de poussi√®re en sort. Il y a une cl√© dans le fond.";
+		} else if (s.matches("PRENDRE.* CL√â")) {
+			if (coffreOuvert && !InventoryManager.getInstance().hasItem("Cl√©")) {
+				InventoryManager.getInstance().addItem("Cl√©");
+				return "Vous ramassez une cl√©.";
 			}
-		} else if (s.matches("UTILISER.* CLÉ.* PORTE")) {
-			if (InventoryManager.getInstance().hasItem("Clé")) {
+		} else if (s.matches("UTILISER.* CL√â.* PORTE")) {
+			if (InventoryManager.getInstance().hasItem("Cl√©")) {
 				isPorteOuverte = true;
-				InventoryManager.getInstance().removeItem("Clé");
+				InventoryManager.getInstance().removeItem("Cl√©");
 				return "La porte est maintenant ouverte.";
 			}
 		}
@@ -44,15 +44,16 @@ public class TutorialRoom extends AbstractRoom {
 	}
 
 	public String look() {
-		return "Vous vous trouvez dans une petite pièce sombre.\n" +
-				"Vous n'avez aucune idée où vous êtes mais vous voyez\n" +
-				"un coffre dans un coin à côté d'ossements humains.";
+		return "Vous vous trouvez dans une petite pi√®ce sombre.\n" +
+				"Vous n'avez aucune id√©e o√π vous √™tes mais vous voyez\n" +
+				"un coffre dans un coin √† c√¥t√© d'ossements humains.";
 	}
 	
 
 	public Room north() throws RoomNotAccessibleException {
 		if (!isPorteOuverte)
-			throw new RoomNotAccessibleException("Vous voyez une porte métallique.\nElle est verrouillée et il n'y a aucun moyen de la défonçer.");
+			throw new RoomNotAccessibleException("Vous voyez une porte m√©tallique.\n" +
+					"Elle est verrouill√©e et il n'y a aucun moyen de la d√©foncer.");
 		LevelManager.getInstance().notifyCurrentLevel("outOfFirstRoomEvent");
 		return null;
 	}

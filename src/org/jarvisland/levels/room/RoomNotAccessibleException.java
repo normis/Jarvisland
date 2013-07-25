@@ -1,7 +1,7 @@
 package org.jarvisland.levels.room;
 
 /**
- * Lors d'un déplecement, il se peut que l'on ne change pas de pièce.
+ * Lors d'un d√©plecement, il se peut que l'on ne change pas de pi√®ce.
  * 
  * Dans ce cas, on utilise cette exception pour en communiquer la raison.
  * 
