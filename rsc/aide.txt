@@ -2,9 +2,9 @@
 
 Nord                    Aller au nord
 Sud                     Aller au sud
-Est                     Aller à l'est
-Ouest                   Aller à l'ouest
-Voir                    Inspecter la pièce
+Est                     Aller √† l'est
+Ouest                   Aller √† l'ouest
+Voir                    Inspecter la pi√®ce
 Inventaire              Afficher l'inventaire
 Ouvrir (item)           Ouvrir un item 
 Prendre (item)          Ajouter un item dans l'inventaire
