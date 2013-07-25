@@ -27,12 +27,12 @@ public class TutorialRoom extends AbstractRoom {
 			
 			coffreOuvert = true;
 			return "Le coffre s'ouvre et un épais nuage de poussière en sort. Il y a une clé dans le fond.";
-		} else if (s.matches("PRENDRE.* CLÉ")) {
+		} else if (s.matches("PRENDRE.* CLE")) {
 			if (coffreOuvert && !InventoryManager.getInstance().hasItem("Clé")) {
 				InventoryManager.getInstance().addItem("Clé");
 				return "Vous ramassez une clé.";
 			}
-		} else if (s.matches("UTILISER.* CLÉ.* PORTE")) {
+		} else if (s.matches("UTILISER.* CLE.* PORTE")) {
 			if (InventoryManager.getInstance().hasItem("Clé")) {
 				isPorteOuverte = true;
 				InventoryManager.getInstance().removeItem("Clé");
