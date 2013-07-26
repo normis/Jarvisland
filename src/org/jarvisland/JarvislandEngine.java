@@ -61,10 +61,10 @@ public class JarvislandEngine {
 	 * Le input est ensuite traité par la pièce (room) en cours.
 	 */
 	private void prompt() {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		System.out.print(">");
 		
 		try {
+			BufferedReader br = new BufferedReader(new InputStreamReader(System.in, "UTF-8"));
+			System.out.print(">");
 			execute(br.readLine());
 		} catch(LevelEndedException lle) {
 			checkCompleted();
