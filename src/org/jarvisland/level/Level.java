@@ -27,17 +27,19 @@ public interface Level {
 	 * Déplacement dans une direction donnée
 	 * 
 	 * @param direction
+	 * @return 
 	 * @throws RoomNotAccessibleException
 	 */
-	public void navigate(String direction) throws RoomNotAccessibleException;
+	public String navigate(String direction) throws RoomNotAccessibleException;
 	
 	/**
 	 * Traitement d'une commande
 	 * 
 	 * @param commande
 	 * @return résultat
+	 * @throws RoomNotAccessibleException 
 	 */
-	public String execute(String commande);
+	public String execute(String commande) throws RoomNotAccessibleException;
 	
 	/**
 	 * Description de la pièce

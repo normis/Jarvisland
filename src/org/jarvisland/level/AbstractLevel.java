@@ -15,7 +15,7 @@ public abstract class AbstractLevel implements Level {
 		this.room = room;
 	}
 	
-	public void navigate(String direction) throws RoomNotAccessibleException {
+	public String navigate(String direction) throws RoomNotAccessibleException {
 		Room nextRoom = null;
 		
 		if (direction.matches("NORD")) nextRoom = room.north();
@@ -27,13 +27,17 @@ public abstract class AbstractLevel implements Level {
 			room = nextRoom;
 		else
 			throw new RoomNotAccessibleException();
+		
+		return room.look();
 	}
 	
 	@Override
-	public String execute(String commande) {
+	public String execute(String commande) throws RoomNotAccessibleException {
 		commande = commande.toUpperCase();
 		
-		if (commande.matches("VOIR")) {
+		if (commande.matches("NORD|SUD|EST|OUEST")) {
+			return navigate(commande);
+		} else if (commande.matches("VOIR")) {
 			return room.look();
 		} else {
 			return room.execute(commande);

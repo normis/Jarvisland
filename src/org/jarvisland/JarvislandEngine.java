@@ -81,18 +81,22 @@ public class JarvislandEngine {
 	private void execute(String commande) {
 		commande = commande.toUpperCase();
 		
-		if (commande.matches("NORD|SUD|EST|OUEST")) {
-			navigate(commande);
-		} else if (commande.matches("INVENTAIRE")) {
+		if (commande.matches("INVENTAIRE")) {
 			afficherInventaire();
 		} else if (commande.matches("AIDE")) {
 			afficherAide();
 		} else if (commande.matches("(ALLO|BONJOUR|SALUT).*")) {
 			put(HelloWorld.SayHi());
 		}  else {
-			String resultat = LevelManager.getInstance().getCurrentLevel().execute(commande);
-			if (checkCompleted() == false)
-				put(resultat != null ? resultat : "Je ne comprends pas cette action.");
+			try {
+				String resultat = LevelManager.getInstance().getCurrentLevel().execute(commande);
+				
+				// Vérifier si l'action a déclancher la fin du niveau
+				if (checkCompleted() == false)
+					put(resultat != null ? resultat : "Je ne comprends pas cette action.");
+			} catch (RoomNotAccessibleException e) {
+				put(e.getMessage());
+			}
 		}
 			
 	}
@@ -118,20 +122,6 @@ public class JarvislandEngine {
 	private void afficherInventaire() {
 		InventoryManager.getInstance().afficher();
 		prompt();
-	}
-
-	/**
-	 * Permet au joueur de se déplacer.
-	 * 
-	 * @param direction
-	 */
-	private void navigate(String direction) {
-		try {
-			LevelManager.getInstance().getCurrentLevel().navigate(direction);
-			put(LevelManager.getInstance().getCurrentLevel().look());
-		} catch (RoomNotAccessibleException nae) {
-			put(nae.getMessage());
-		}
 	}
 	
 	/**
