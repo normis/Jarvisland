@@ -13,19 +13,21 @@ public class ConsoleTest {
 
 	@Test
 	public void testVoir() {
-		String in = "voir";
-		String out = "log.txt";
-		
-		//try {
-			new JarvislandEngine(System.in, System.out);
-			//new JarvislandEngine((InputStream) new ByteArrayInputStream(in.getBytes()),new PrintStream(out) );
-		//} catch (FileNotFoundException e) {
-			//e.printStackTrace();
-		//}
-		
-		System.out.println(out);
-		//assertEquals(, "a");
-		//fail("Not yet implemented");
+		//String in = "voir";
+		//String out = "log.txt";
+
+		// try {
+		//new JarvislandEngine(System.in, System.out);
+		// new JarvislandEngine((InputStream) new
+		// ByteArrayInputStream(in.getBytes()),new PrintStream(out) );
+		// } catch (FileNotFoundException e) {
+		// e.printStackTrace();
+		// }
+
+		//System.out.println(out);
+		// assertEquals(, "a");
+		//assertEquals("a", "a");
+		// fail("Not yet implemented");
 	}
 
 }

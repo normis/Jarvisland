@@ -5,21 +5,21 @@ import org.jarvisland.LevelManager;
 import org.jarvisland.levels.room.AbstractRoom;
 import org.jarvisland.levels.room.Room;
 import org.jarvisland.levels.room.RoomNotAccessibleException;
-
+import org.jarvisland.player.PlayerManager;
 
 /**
  * La pièce tutoriel du niveau 0
  * 
- * Il faut ouvrir un coffre, prendre la clé, utiliser la clé
- * sur la porte et sortir de la pièce. 
+ * Il faut ouvrir un coffre, prendre la clé, utiliser la clé sur la porte et
+ * sortir de la pièce.
  * 
  * @author niclupien
- *
+ * 
  */
 public class TutorialRoom extends AbstractRoom {
 	boolean coffreOuvert = false;
 	boolean isPorteOuverte = false;
-	
+
 	public String execute(String s) {
 		if (s.matches("OUVRIR.* COFFRE")) {
 			if (coffreOuvert)
@@ -38,34 +38,39 @@ public class TutorialRoom extends AbstractRoom {
 				InventoryManager.getInstance().removeItem("Clé");
 				return "La porte est maintenant ouverte.";
 			}
-		}
+			
+		} else if (s.matches("MOURIR")) {
+			PlayerManager.getInstance().dropLife(1000000000);	
+			return "Tu est mort";
+			}
 		
 		return null;
 	}
 
 	public String look() {
-		return "Vous vous trouvez dans une petite pièce sombre.\n" +
-				"Vous n'avez aucune idée où vous êtes mais vous voyez\n" +
-				"un coffre dans un coin à côté d'ossements humains.";
+		return "Vous vous trouvez dans une petite pièce sombre.\n"
+				+ "Vous n'avez aucune idée où vous êtes mais vous voyez\n"
+				+ "un coffre dans un coin à côté d'ossements humains.";
 	}
-	
 
 	public Room north() throws RoomNotAccessibleException {
 		if (!isPorteOuverte)
-			throw new RoomNotAccessibleException("Vous voyez une porte métallique.\n" +
-					"Elle est verrouillée et il n'y a aucun moyen de la défoncer.");
+			throw new RoomNotAccessibleException(
+					"Vous voyez une porte métallique.\n"
+							+ "Elle est verrouillée et il n'y a aucun moyen de la défoncer.");
 		LevelManager.getInstance().notifyCurrentLevel("outOfFirstRoomEvent");
 		return null;
 	}
-	
+
 	public Room south() throws RoomNotAccessibleException {
-		throw new RoomNotAccessibleException("Vous voyez un mur de pierre couvert de taches de sang.");
+		throw new RoomNotAccessibleException(
+				"Vous voyez un mur de pierre couvert de taches de sang.");
 	}
-	
+
 	public Room east() throws RoomNotAccessibleException {
 		throw new RoomNotAccessibleException("Vous voyez un mur de pierre.");
 	}
-	
+
 	public Room west() throws RoomNotAccessibleException {
 		throw new RoomNotAccessibleException("Vous voyez un mur de pierre.");
 	}
