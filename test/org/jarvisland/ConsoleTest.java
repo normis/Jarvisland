@@ -2,8 +2,6 @@ package org.jarvisland;
 
 import static org.junit.Assert.assertEquals;
 
-import java.io.BufferedReader;
-
 import org.junit.Test;
 
 public class ConsoleTest {
@@ -11,7 +9,7 @@ public class ConsoleTest {
 	@Test
 	public void testVoir() {
 		String s = "a";
-		new JarvislandEngine(new BufferedReader(null));
+		//new JarvislandEngine(System.in,System.out);
 		
 		
 		assertEquals(s, "a");
