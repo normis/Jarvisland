@@ -1,5 +1,9 @@
 package org.jarvisland;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+
 
 /**
  * Jarvisland est un jeu RGP en ligne de commande
@@ -22,7 +26,13 @@ public class Jarvisland {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-			new JarvislandEngine();
+
+			try {
+				new JarvislandEngine(new BufferedReader(new InputStreamReader(System.in, "UTF-8")));
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	}
 
 }
