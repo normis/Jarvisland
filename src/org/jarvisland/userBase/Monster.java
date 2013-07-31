@@ -2,7 +2,7 @@ package org.jarvisland.userBase;
 
 import java.util.ArrayList;
 
-public class Monstre implements UserBase{
+public abstract class Monster implements LifeForm{
 
 	private String nom;
 	private int vie;
@@ -10,7 +10,7 @@ public class Monstre implements UserBase{
 	private int baseLife;
 	private ArrayList<Attaque> arrAttaque;
 	
-	public Monstre(String nom, int vie, int level){
+	public Monster(String nom, int vie, int level){
 		this.nom = nom;
 		this.vie = vie;
 		this.baseLife = vie;
@@ -40,7 +40,7 @@ public class Monstre implements UserBase{
 		vie = baseLife;
 	}
 
-	public String attaque(UserBase user, String nameAttaque) throws UserAttaqueException, UserLifeException {
+	public String attaque(LifeForm user, String nameAttaque) throws UserAttaqueException, UserLifeException {
 		if(arrAttaque.size() > 0){
 			int tableauSize = arrAttaque.size() - 1;
 			int randomNum = 0 + (int)(Math.random()*tableauSize);

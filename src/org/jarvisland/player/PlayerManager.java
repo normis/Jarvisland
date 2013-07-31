@@ -13,10 +13,10 @@ package org.jarvisland.player;
 import java.util.List;
 
 import org.jarvisland.userBase.Attaque;
-import org.jarvisland.userBase.UserBase;
+import org.jarvisland.userBase.LifeForm;
 import org.jarvisland.userBase.UserLifeException;
 
-public class PlayerManager implements UserBase{
+public class PlayerManager implements LifeForm{
 	private final int changeVie;
 	private int vieInitial;
 	private int vie;
@@ -92,7 +92,7 @@ public class PlayerManager implements UserBase{
 		level = newLevel;
 	}
 
-	public String attaque(UserBase user, String nameAttaque) throws UserLifeException {
+	public String attaque(LifeForm user, String nameAttaque) throws UserLifeException {
 		int dommage = 0;
 		String attaque = "";
 		for(Attaque atk : listAttaque)
