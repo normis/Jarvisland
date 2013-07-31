@@ -4,13 +4,13 @@ import org.jarvisland.InventoryManager;
 import org.jarvisland.level.AbstractLevel;
 import org.jarvisland.level.LevelEndedException;
 import org.jarvisland.levels.room.Room;
+import org.jarvisland.player.DeathException;
 
 public class Level1 extends AbstractLevel {
 	boolean outOfPuit = false;
 	boolean outOfSurplomb = false;
 	boolean outOfEnigme = false;
 	boolean outOfWine = false; // that's sad
-	boolean estMort = false;
 
 	String messageFinLevel = "Vous grimper une echelle et vous atteigner enfin l'exterieur! La roche engraver par les runes \" cliff \" se met a parler \n "
 			+ "-Cliff: Vous devez allez sauve la princesse Jarvis!";
@@ -56,8 +56,14 @@ public class Level1 extends AbstractLevel {
 			System.out.println(messageFinLevel);
 			throw new LevelEndedException();
 		}
-		// else if (event.equals("estMort"))
-		//throw new DeathException();
+		else if (event.equals("estMort")){
+			System.out.println("Vous tomber dans le puit, Vous frapper violament le sol apres 10 seconde,\n"
+					+ "le sol est couvers de pieux qui vous empale,\n"
+					+ "Des bruleurs s'active,\n "
+					+ "et les murs commence a bouger pour ecraser se qui reste. \n"
+					+ "Bref, vous etes mort applatit, transperé par plusieurs broches, incinéré et ecrabouillé");
+			throw new DeathException();
+		}
 	}
 
 	@Override

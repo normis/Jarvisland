@@ -37,11 +37,7 @@ public class Surplomb extends AbstractRoom {
 					+ "Etrange... vous reprenez Cliff.";
 		} else if (s.matches("OUI") && veutTomber) {
 			LevelManager.getInstance().notifyCurrentLevel("estMort");
-			return "Vous tomber dans le puit, Vous frapper violament le sol apres 10 seconde,\n"
-					+ "le sol est couvers de pieux qui vous empale,\n"
-					+ "Des bruleurs s'active,\n "
-					+ "et les murs commence a bouger pour ecraser se qui reste. \n"
-					+ "Bref, vous etes mort applatit, transperé par plusieurs broches, incinéré et ecrabouillé";
+			return null;
 		}
 
 		return null;
