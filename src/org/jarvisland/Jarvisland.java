@@ -1,5 +1,7 @@
 package org.jarvisland;
 
+import org.jarvisland.levels.room.RoomNotAccessibleException;
+
 /**
  * Jarvisland est un jeu RGP en ligne de commande
  * fortement inspiré de Zork I: The Great Underground Empire
@@ -21,7 +23,12 @@ public class Jarvisland {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		new JarvislandEngine();
+		try {
+			new JarvislandEngine();
+		} catch (RoomNotAccessibleException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

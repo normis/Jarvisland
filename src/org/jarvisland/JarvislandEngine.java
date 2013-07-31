@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.util.Scanner;
 
 import org.jarvisland.level.LevelEndedException;
+import org.jarvisland.levels.room.RoomNotAccessibleException;
 
 /**
  * Moteur du jeu Jarvisland
@@ -29,8 +30,9 @@ public class JarvislandEngine {
 	 * et la charge.
 	 * 
 	 * @param startRoom
+	 * @throws RoomNotAccessibleException 
 	 */
-	public JarvislandEngine() {
+	public JarvislandEngine() throws RoomNotAccessibleException {
 		System.out.println("=====================================");
 		System.out.println("Bienvenue à Jarvisland!");
 		System.out.println("Entrez 'aide' pour voir les commandes");
@@ -48,8 +50,9 @@ public class JarvislandEngine {
 	 * a été envoyé.
 	 * 
 	 * @param s
+	 * @throws RoomNotAccessibleException 
 	 */
-	private void put(String s) {
+	private void put(String s) throws RoomNotAccessibleException {
 		System.out.println(s);
 		prompt();
 	}
@@ -58,8 +61,9 @@ public class JarvislandEngine {
 	 * Demande le input du joueur
 	 * 
 	 * Le input est ensuite traité par la pièce (room) en cours.
+	 * @throws RoomNotAccessibleException 
 	 */
-	private void prompt() {
+	private void prompt() throws RoomNotAccessibleException {
 		
 		try {
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in, "UTF-8"));
@@ -76,8 +80,9 @@ public class JarvislandEngine {
 	 * Execute une commande entrée par le joueur.
 	 * 
 	 * @param commande
+	 * @throws RoomNotAccessibleException 
 	 */
-	private void execute(String commande) {
+	private void execute(String commande) throws RoomNotAccessibleException {
 		commande = commande.toUpperCase();
 		
 		if (commande.matches("INVENTAIRE")) {
@@ -87,8 +92,13 @@ public class JarvislandEngine {
 		} else if (commande.matches("(ALLO|BONJOUR|SALUT).*")) {
 			put(HelloWorld.SayHi());
 		}  else {
-			put(LevelManager.getInstance().getCurrentLevel().execute(commande));
-		}
+			String test = LevelManager.getInstance().getCurrentLevel().execute(commande);
+			if(test == null){
+				put ("La commande n'est pas valide");
+			} else{
+				put(test);
+			}
+		}	
 			
 	}
 	
@@ -97,8 +107,9 @@ public class JarvislandEngine {
 	 * le prochain niveau.
 	 * 
 	 * @return completed
+	 * @throws RoomNotAccessibleException 
 	 */
-	private boolean checkCompleted() {
+	private boolean checkCompleted() throws RoomNotAccessibleException {
 		if (LevelManager.getInstance().getCurrentLevel().isCompleted()) {
 			LevelManager.getInstance().nextLevel();
 			put(LevelManager.getInstance().getCurrentLevel().look());
@@ -109,16 +120,18 @@ public class JarvislandEngine {
 
 	/**
 	 * Affiche l'inventaire du joueur
+	 * @throws RoomNotAccessibleException 
 	 */
-	private void afficherInventaire() {
+	private void afficherInventaire() throws RoomNotAccessibleException {
 		InventoryManager.getInstance().afficher();
 		prompt();
 	}
 	
 	/**
 	 * Affiche les commandes de Jarvisland
+	 * @throws RoomNotAccessibleException 
 	 */
-	private void afficherAide() {
+	private void afficherAide() throws RoomNotAccessibleException {
 		System.out.println();
 		InputStream file = ClassLoader.getSystemResourceAsStream("aide.txt");
 		put(new Scanner(file).useDelimiter("\\Z").next());
