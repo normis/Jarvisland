@@ -9,6 +9,8 @@ public class Level1 extends AbstractLevel {
 	boolean outOfPuit = false;
 	boolean outOfSurplomb = false;
 	boolean outOfEnigme = false;
+	boolean outOfWine = false; // that's sad
+	boolean estMort = false;
 
 	String messageFinLevel = "Vous grimper une echelle et vous atteigner enfin l'exterieur! La roche engraver par les runes \" cliff \" se met a parler \n "
 			+ "-Cliff: Vous devez allez sauve la princesse Jarvis!";
@@ -21,6 +23,20 @@ public class Level1 extends AbstractLevel {
 		InventoryManager.getInstance().addItem("Bouteille de vin");
 		InventoryManager.getInstance().addItem("Lampe de poche");
 		InventoryManager.getInstance().addItem("Grappin");
+	}
+
+	@Override
+	public String execute(String s) {
+		String retour = super.execute(s);
+		if (retour == null) {
+			if (s.matches("(UTILISER|BOIRE).* BOUTEILLE DE VIN") && !outOfWine) {
+				InventoryManager.getInstance().removeItem("Bouteille de vin");
+				outOfWine = true;
+				return "Vous ne vous senter pas bien et vous vous assoyer quel que seconde, vous retoruner la bouteille et \n "
+						+ "apercever une tete de mort imprimer sur la bouteile.";
+			}
+		}
+		return retour;
 	}
 
 	@Override
@@ -40,6 +56,8 @@ public class Level1 extends AbstractLevel {
 			System.out.println(messageFinLevel);
 			throw new LevelEndedException();
 		}
+		// else if (event.equals("estMort"))
+		//throw new DeathException();
 	}
 
 	@Override

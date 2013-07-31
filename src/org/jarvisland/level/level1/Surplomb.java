@@ -10,6 +10,7 @@ public class Surplomb extends AbstractRoom {
 	boolean utiliserLampe = false;
 	boolean pritRoche = false;
 	boolean utiliserRoche = false;
+	boolean veutTomber = false;
 
 	@Override
 	public String look() {
@@ -28,11 +29,19 @@ public class Surplomb extends AbstractRoom {
 		} else if (s.matches("(UTILISER|ALLUMER).* LAMPE DE POCHE")) {
 			utiliserLampe = true;
 			return "Il fait maintenant clair.";
-		} else if (s.matches("UTILISER.* CLIFF") && pritRoche) {
+		} else if (s.matches("UTILISER.* CLIFF") && pritRoche && !utiliserRoche) {
 			utiliserRoche = true;
 			LevelManager.getInstance().notifyCurrentLevel("outOfSurplomb");
 			return "Vous lancer la roche dans le mur de planche.\n"
-					+ "Roche : Aaaaaaaaaoutch!\n";
+					+ "Roche : Aaaaaaaaaoutch!\n"
+					+ "Etrange... vous reprenez Cliff.";
+		} else if (s.matches("OUI") && veutTomber) {
+			LevelManager.getInstance().notifyCurrentLevel("estMort");
+			return "Vous tomber dans le puit, Vous frapper violament le sol apres 10 seconde,\n"
+					+ "le sol est couvers de pieux qui vous empale,\n"
+					+ "Des bruleurs s'active,\n "
+					+ "et les murs commence a bouger pour ecraser se qui reste. \n"
+					+ "Bref, vous etes mort applatit, transperé par plusieurs broches, incinéré et ecrabouillé";
 		}
 
 		return null;
@@ -55,9 +64,11 @@ public class Surplomb extends AbstractRoom {
 	}
 
 	public Room west() throws RoomNotAccessibleException {
-		if (utiliserLampe)
+		if (utiliserLampe){
+			veutTomber = true;
 			throw new RoomNotAccessibleException(
 					"Vous voyez le puis d'ou vous venez, voulez-vous vraiment y retourner ?");
+		}
 		else
 			throw new RoomNotAccessibleException("Il fait noir");
 	}
