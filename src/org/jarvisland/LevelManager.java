@@ -25,7 +25,7 @@ public class LevelManager {
 	
 	private LevelManager() {
 		levels = new LinkedList<Level>();
-		//levels.add(new Level0());
+		levels.add(new Level0());
 		levels.add(new Level1());
 	}
 	
