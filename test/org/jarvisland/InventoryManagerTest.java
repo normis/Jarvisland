@@ -12,4 +12,7 @@ public class InventoryManagerTest {
 		assertTrue(InventoryManager.getInstance().hasItem("item"));
 	}
 
+	
+	
+	
 }

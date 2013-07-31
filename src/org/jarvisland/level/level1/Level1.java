@@ -10,7 +10,7 @@ public class Level1 extends AbstractLevel {
 	boolean outOfEnigme = false;
 
 	public Level1() {
-		map.put("someRule", new SomeRoom());
+		map.put("someRule", new Puit());
 		room = map.get("someRule");
 		InventoryManager.getInstance().addItem("Bouteille de vin");
 		InventoryManager.getInstance().addItem("Lampe de poche");
@@ -35,14 +35,13 @@ public class Level1 extends AbstractLevel {
 	}
 
 	@Override
-	public Room getRoom(String room) {
-		return map.get(room);
-
-	}
-
-	@Override
 	public String getName() {
 		return "Niveau Un";// u r falling down
 	}
 
+	@Override
+	public Room getRoom(String room){
+		return map.get(room);
+		
+	}
 }
