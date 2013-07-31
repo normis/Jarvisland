@@ -14,6 +14,7 @@ import java.util.List;
 
 import org.jarvisland.userBase.Attaque;
 import org.jarvisland.userBase.UserBase;
+import org.jarvisland.userBase.UserLifeException;
 
 public class PlayerManager implements UserBase{
 	private final int changeVie;
@@ -91,7 +92,7 @@ public class PlayerManager implements UserBase{
 		level = newLevel;
 	}
 
-	public String attaque(UserBase user, String nameAttaque) throws Exception {
+	public String attaque(UserBase user, String nameAttaque) throws UserLifeException {
 		int dommage = 0;
 		String attaque = "";
 		for(Attaque atk : listAttaque)

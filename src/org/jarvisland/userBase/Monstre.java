@@ -40,7 +40,7 @@ public class Monstre implements UserBase{
 		vie = baseLife;
 	}
 
-	public String attaque(UserBase user, String nameAttaque) throws Exception {
+	public String attaque(UserBase user, String nameAttaque) throws UserAttaqueException, UserLifeException {
 		if(arrAttaque.size() > 0){
 			int tableauSize = arrAttaque.size() - 1;
 			int randomNum = 0 + (int)(Math.random()*tableauSize);
@@ -50,18 +50,18 @@ public class Monstre implements UserBase{
 			return user.getName() + " a utiliser l'attaque " + attaque.getNom();
 		}
 		else
-			throw new Exception("Le monstre n'a aucune attaque");
+			throw new UserAttaqueException();
 	}
 
 	@Override
-	public void dropLife(int loseLife) throws Exception {
+	public void dropLife(int loseLife) throws UserLifeException {
 		if(!isDead()){
 			vie = vie - loseLife;
 			if(vie < 0)
 				vie = 0;
 		}
 		else
-			throw new Exception("L'ennemie est déjà mort");
+			throw new UserLifeException("L'usager " + getName() + " est déjà mort");
 	}
 
 	@Override
