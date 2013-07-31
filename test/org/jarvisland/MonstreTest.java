@@ -3,25 +3,29 @@ package org.jarvisland;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import org.jarvisland.userBase.AtomMonsterFactory;
 import org.jarvisland.userBase.Attaque;
-import org.jarvisland.userBase.Monstre;
+import org.jarvisland.userBase.Monster;
+import org.jarvisland.userBase.MonsterFactory;
 import org.junit.Test;
 
 public class MonstreTest {
 	
 	@Test
 	public void testMonstreFactoryConstructeur() {
-		Monstre unMonstre = new Monstre("MegaMonstre", 20, 2);
-		assertTrue(unMonstre.getVie() == 20);
-		assertTrue(unMonstre.getName().equals("MegaMonstre"));
+		MonsterFactory mf = new AtomMonsterFactory();
+		Monster unMonstre = mf.getMonstre();
+		assertTrue(unMonstre.getVie() == 25);
+		assertTrue(unMonstre.getName().equals("Atom Monster"));
 	}
 	
 	@Test
 	public void testMonstreFactoryLife() {
-		Monstre unMonstre = new Monstre("MegaMonstre", 20, 2);
+		MonsterFactory mf = new AtomMonsterFactory();
+		Monster unMonstre = mf.getMonstre();
 		
 		try{
-			unMonstre.dropLife(19);
+			unMonstre.dropLife(24);
 			assertTrue(unMonstre.getVie() == 1);
 			unMonstre.raiseLife(5);
 			assertTrue(unMonstre.getVie() == 6);
@@ -32,25 +36,20 @@ public class MonstreTest {
 		}
 		catch(Exception e){
 			unMonstre.resetLife();
-			assertTrue(unMonstre.getVie() == 20);
+			assertTrue(unMonstre.getVie() == 25);
 		}
 	}
 	
 	@Test
 	public void testMonstreFactoryAttaque() {
-		Monstre unMonstre = new Monstre("MegaMonstre", 20, 2);
-		Monstre unAutreMonstre = new Monstre("MegaTest", 30, 2);
+		MonsterFactory mf = new AtomMonsterFactory();
 		
-		Attaque attaque1 = new Attaque("test", 10);
-		unMonstre.addAttaque(attaque1);
+		Monster unMonstre = mf.getMonstre();
+		Monster unAutreMonstre = mf.getMonstre();
 		
 		try{
 			unMonstre.attaque(unAutreMonstre, null);
-			assertTrue(unAutreMonstre.getVie() == 20);
-		
-			unMonstre.removeAttaque(attaque1);
-			unMonstre.attaque(unAutreMonstre, null);
-			fail();
+			assertTrue(unAutreMonstre.getVie() != 25);
 		}
 		catch(Exception e){
 			

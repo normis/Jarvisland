@@ -1,10 +1,10 @@
 package org.jarvisland.userBase;
 
-public interface UserBase{
+public interface LifeForm{
 	public int getVie();
 	public String getName();
 	public void resetLife();
-	public String attaque(UserBase user, String nameAttaque) throws UserAttaqueException, UserLifeException;
+	public String attaque(LifeForm user, String nameAttaque) throws UserAttaqueException, UserLifeException;
 	public void raiseLife(int gainLife); 
 	public void dropLife(int loseLife) throws UserLifeException;
 	public boolean isDead();
