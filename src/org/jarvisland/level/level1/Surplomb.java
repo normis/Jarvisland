@@ -30,6 +30,7 @@ public class Surplomb extends AbstractRoom {
 			return "Il fait maintenant clair.";
 		} else if (s.matches("UTILISER.* CLIFF") && pritRoche) {
 			utiliserRoche = true;
+			LevelManager.getInstance().notifyCurrentLevel("outOfSurplomb");
 			return "Vous lancer la roche dans le mur de planche.\n"
 					+ "Roche : Aaaaaaaaaoutch!\n";
 		}
@@ -64,7 +65,7 @@ public class Surplomb extends AbstractRoom {
 	public Room north() throws RoomNotAccessibleException {
 		if (utiliserLampe && !utiliserRoche)
 			throw new RoomNotAccessibleException(
-					"Vous apercevez quelques planches pourites qui semblent assez faible.");
+					"Vous apercevez quelques planches pourries qui semblent assez faible.");
 		else if (utiliserLampe && utiliserRoche)
 			return LevelManager.getInstance().getCurrentLevel()
 					.getRoom("Enigme");
