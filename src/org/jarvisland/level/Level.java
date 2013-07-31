@@ -31,7 +31,7 @@ public interface Level {
 	 * @return 
 	 * @throws RoomNotAccessibleException
 	 */
-	public String navigate(String direction) throws RoomNotAccessibleException;
+	public String navigate(String direction);
 	
 	/**
 	 * Traitement d'une commande
@@ -40,7 +40,7 @@ public interface Level {
 	 * @return résultat
 	 * @throws RoomNotAccessibleException 
 	 */
-	public String execute(String commande) throws RoomNotAccessibleException;
+	public String execute(String commande);
 	
 	/**
 	 * Description de la pièce
