@@ -3,6 +3,8 @@ package org.jarvisland;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.PrintStream;
 import java.util.Scanner;
 
 import org.jarvisland.level.LevelEndedException;
@@ -24,20 +26,23 @@ import org.jarvisland.levels.room.RoomNotAccessibleException;
 public class JarvislandEngine {
 
 	private BufferedReader bufferedReader;
+	private PrintStream printStream;
+	
 	/**
 	 * Le constructeur prend en paramètre une pièce de départ et la charge.
 	 * 
 	 * @param startRoom
 	 * @throws RoomNotAccessibleException
 	 */
-	public JarvislandEngine(BufferedReader br) {
+	public JarvislandEngine(InputStream is, PrintStream ps) {
 		System.out.println("=====================================");
 		System.out.println("Bienvenue à Jarvisland!");
 		System.out.println("Entrez 'aide' pour voir les commandes");
 		System.out.println("=====================================");
 		System.out.println();
 		
-		this.bufferedReader = br;
+		this.bufferedReader = new BufferedReader(new InputStreamReader(is));
+		this.printStream = ps;
 
 		LevelManager.getInstance().nextLevel();
 		put(LevelManager.getInstance().getCurrentLevel().look());
@@ -53,7 +58,7 @@ public class JarvislandEngine {
 	 * @throws RoomNotAccessibleException
 	 */
 	private void put(String s) {
-		System.out.println(s);
+		printStream.println(s);
 		prompt();
 	}
 
@@ -67,7 +72,7 @@ public class JarvislandEngine {
 	private void prompt() {
 
 		try {
-			System.out.print(">");
+			printStream.print(">");
 			execute(bufferedReader.readLine());
 		} catch (LevelEndedException lle) {
 			checkCompleted();
