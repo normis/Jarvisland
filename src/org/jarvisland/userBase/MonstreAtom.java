@@ -1,7 +1,5 @@
 package org.jarvisland.userBase;
 
-import java.util.ArrayList;
-
 public class MonstreAtom {
 	
 	Monstre monstreAtom;
