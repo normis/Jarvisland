@@ -1,6 +1,5 @@
 package org.jarvisland;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.jarvisland.userBase.Attaque;

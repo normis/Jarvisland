@@ -1,6 +1,5 @@
 package org.jarvisland;
 
-
 /**
  * Jarvisland est un jeu RGP en ligne de commande
  * fortement inspiré de Zork I: The Great Underground Empire
@@ -22,7 +21,7 @@ public class Jarvisland {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-			new JarvislandEngine();
+		new JarvislandEngine(System.in, System.out);
 	}
 
 }
