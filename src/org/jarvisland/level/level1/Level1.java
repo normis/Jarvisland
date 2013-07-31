@@ -1,11 +1,13 @@
 package org.jarvisland.level.level1;
 
 import org.jarvisland.level.AbstractLevel;
+import org.jarvisland.levels.room.Room;
 
 public class Level1 extends AbstractLevel {
 
 	public Level1() {
-		super(new SomeRoom());
+		map.put("someRule", new SomeRoom());
+		room = map.get("someRule");
 	}
 
 	@Override
@@ -23,5 +25,11 @@ public class Level1 extends AbstractLevel {
 	@Override
 	public String getName() {
 		return "The Limbo";
+	}
+
+	@Override
+	public Room getRoom(String room){
+		return map.get(room);
+		
 	}
 }

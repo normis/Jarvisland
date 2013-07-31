@@ -1,5 +1,6 @@
 package org.jarvisland.level;
 
+import org.jarvisland.levels.room.Room;
 import org.jarvisland.levels.room.RoomNotAccessibleException;
 
 /**
@@ -62,4 +63,13 @@ public interface Level {
 	 * @return nom
 	 */
 	public String getName();
+	
+	/**
+	 * Nom de la room actuel
+	 * 
+	 * @return nom
+	 */
+	public Room getRoom(String room);
+	
+	
 }

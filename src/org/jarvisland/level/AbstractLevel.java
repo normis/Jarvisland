@@ -1,5 +1,8 @@
 package org.jarvisland.level;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.jarvisland.levels.room.Room;
 import org.jarvisland.levels.room.RoomNotAccessibleException;
 
@@ -9,11 +12,9 @@ import org.jarvisland.levels.room.RoomNotAccessibleException;
  *
  */
 public abstract class AbstractLevel implements Level {
-	private Room room;
+	protected Room room;
+	protected Map<String, Room> map = new HashMap<String, Room>();
 	
-	public AbstractLevel(Room room) {
-		this.room = room;
-	}
 	
 	public String navigate(String direction) throws RoomNotAccessibleException {
 		Room nextRoom = null;
