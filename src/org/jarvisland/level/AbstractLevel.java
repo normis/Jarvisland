@@ -14,8 +14,7 @@ import org.jarvisland.levels.room.RoomNotAccessibleException;
 public abstract class AbstractLevel implements Level {
 	protected Room room;
 	protected Map<String, Room> map = new HashMap<String, Room>();
-	
-	
+
 	public String navigate(String direction) {
 		Room nextRoom = null;
 
@@ -57,17 +56,18 @@ public abstract class AbstractLevel implements Level {
 	public String look() {
 		return room.look();
 	}
-	public String changeRoom(String newRoom) throws RoomNotAccessibleException {
+
+	public String changeRoom(String newRoom) {
 		room = map.get(newRoom);
 		return room.look();
 	}
-	
+
 	/**
 	 * Nom de la room actuel
 	 * 
 	 * @return nom
 	 */
-	public Room getRoom(String room){
+	public Room getRoom(String room) {
 		return map.get(room);
 	}
 
