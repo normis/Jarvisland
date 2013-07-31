@@ -65,12 +65,12 @@ public class PlayerManager implements LifeForm{
 	}
 	
 	@Override
-	public void dropLife(int dommage) {
+	public void dropLife(int dommage) throws DeathException{
 		vie -= dommage;
 		if(vie <= 0)
 		{
 			vie = 0;
-			dead = true;
+			throw new DeathException();
 		}
 	}
 
@@ -127,5 +127,9 @@ public class PlayerManager implements LifeForm{
 		{
 			System.out.println(atk.getNom() + " qui fais " + atk.getNbrDegats() + " de dommage");
 		}
+	}
+
+	public String mourir() {
+		return "VOUS ETES MORTTTTTTTTTTTTT";
 	}
 }

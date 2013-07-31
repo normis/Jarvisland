@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 import org.jarvisland.level.LevelEndedException;
 import org.jarvisland.levels.room.RoomNotAccessibleException;
+import org.jarvisland.player.DeathException;
 import org.jarvisland.player.PlayerManager;
 
 /**
@@ -78,6 +79,8 @@ public class JarvislandEngine {
 			execute(bufferedReader.readLine());
 		} catch (LevelEndedException lle) {
 			checkCompleted();
+		} catch (DeathException lle) {
+			checkDeath();	
 		} catch (IOException e) {
 			System.err.println("Invalid Format!");
 		}
@@ -114,7 +117,6 @@ public class JarvislandEngine {
 	 * niveau.
 	 * 
 	 * @return completed
-	 * @throws RoomNotAccessibleException
 	 */
 	private boolean checkCompleted() {
 		if (LevelManager.getInstance().getCurrentLevel().isCompleted()) {
@@ -126,9 +128,24 @@ public class JarvislandEngine {
 	}
 
 	/**
+	 * Vérifie si le niveau est complété. S'il l'est, on charge le prochain
+	 * niveau.
+	 * 
+	 * @return completed
+	 */
+	private boolean checkDeath() {
+		if (PlayerManager.getInstance().getVie() == 0) {
+			put(PlayerManager.getInstance().mourir());
+			//LevelManager.getInstance().resetLevel();
+
+			return true;
+		}
+		return false;
+	}
+
+	/**
 	 * Affiche l'inventaire du joueur
 	 * 
-	 * @throws RoomNotAccessibleException
 	 */
 	private void afficherInventaire() {
 		InventoryManager.getInstance().afficher();
