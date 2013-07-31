@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public class MonstreAtom {
 	
-	MonstreFactory monstreAtom;
+	Monstre monstreAtom;
 
 	public MonstreAtom(){
 		
-		monstreAtom = new MonstreFactory("Monstre Atom", 25, 1);
+		monstreAtom = new Monstre("Monstre Atom", 25, 1);
 		
 		Attaque attaque1 = new Attaque("Fork Bomb", 10);
 		monstreAtom.addAttaque(attaque1);
@@ -21,7 +21,7 @@ public class MonstreAtom {
 	}
 	
 	
-	public MonstreFactory getMonsterFactory(){
+	public Monstre getMonsterFactory(){
 		return monstreAtom;
 	}
 

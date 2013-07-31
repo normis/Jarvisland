@@ -2,7 +2,7 @@ package org.jarvisland.userBase;
 
 import java.util.ArrayList;
 
-public class MonstreFactory implements UserBase{
+public class Monstre implements UserBase{
 
 	private String nom;
 	private int vie;
@@ -10,7 +10,7 @@ public class MonstreFactory implements UserBase{
 	private int baseLife;
 	private ArrayList<Attaque> arrAttaque;
 	
-	public MonstreFactory(String nom, int vie, int level){
+	public Monstre(String nom, int vie, int level){
 		this.nom = nom;
 		this.vie = vie;
 		this.baseLife = vie;

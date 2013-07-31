@@ -4,21 +4,21 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import org.jarvisland.userBase.Attaque;
-import org.jarvisland.userBase.MonstreFactory;
+import org.jarvisland.userBase.Monstre;
 import org.junit.Test;
 
-public class MonstreFactoryTest {
+public class MonstreTest {
 	
 	@Test
 	public void testMonstreFactoryConstructeur() {
-		MonstreFactory unMonstre = new MonstreFactory("MegaMonstre", 20, 2);
+		Monstre unMonstre = new Monstre("MegaMonstre", 20, 2);
 		assertTrue(unMonstre.getVie() == 20);
 		assertTrue(unMonstre.getName().equals("MegaMonstre"));
 	}
 	
 	@Test
 	public void testMonstreFactoryLife() {
-		MonstreFactory unMonstre = new MonstreFactory("MegaMonstre", 20, 2);
+		Monstre unMonstre = new Monstre("MegaMonstre", 20, 2);
 		
 		try{
 			unMonstre.dropLife(19);
@@ -38,8 +38,8 @@ public class MonstreFactoryTest {
 	
 	@Test
 	public void testMonstreFactoryAttaque() {
-		MonstreFactory unMonstre = new MonstreFactory("MegaMonstre", 20, 2);
-		MonstreFactory unAutreMonstre = new MonstreFactory("MegaTest", 30, 2);
+		Monstre unMonstre = new Monstre("MegaMonstre", 20, 2);
+		Monstre unAutreMonstre = new Monstre("MegaTest", 30, 2);
 		
 		Attaque attaque1 = new Attaque("test", 10);
 		unMonstre.addAttaque(attaque1);
