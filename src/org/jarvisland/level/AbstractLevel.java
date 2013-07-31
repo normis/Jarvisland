@@ -57,5 +57,18 @@ public abstract class AbstractLevel implements Level {
 	public String look() {
 		return room.look();
 	}
+	public String changeRoom(String newRoom) throws RoomNotAccessibleException {
+		room = map.get(newRoom);
+		return room.look();
+	}
+	
+	/**
+	 * Nom de la room actuel
+	 * 
+	 * @return nom
+	 */
+	public Room getRoom(String room){
+		return map.get(room);
+	}
 
 }
