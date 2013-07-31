@@ -65,6 +65,7 @@ public class PlayerManager implements LifeForm{
 		if(vie <= 0)
 		{
 			vie = 0;
+			dead = false;
 			throw new DeathException();
 		}
 	}

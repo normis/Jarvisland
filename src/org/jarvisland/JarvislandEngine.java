@@ -78,7 +78,7 @@ public class JarvislandEngine {
 			execute(bufferedReader.readLine());
 		} catch (LevelEndedException lle) {
 			checkCompleted();
-		} catch (DeathException lle) {
+		} catch (DeathException death) {
 			checkDeath();	
 		} catch (IOException e) {
 			System.err.println("Invalid Format!");
