@@ -27,7 +27,6 @@ public class Level1 extends AbstractLevel {
 
 	@Override
 	public void notify(String event) {
-		System.out.println("notify");
 		if (event.equals("outOfPuit"))
 			outOfPuit = true;
 		// TODO Auto-generated method stub

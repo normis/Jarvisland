@@ -8,4 +8,5 @@ Voir                    Inspecter la pièce
 Inventaire              Afficher l'inventaire
 Ouvrir (item)           Ouvrir un item 
 Prendre (item)          Ajouter un item dans l'inventaire
+Utiliser (item)         Utiliser un item
 Utiliser (item) (obj)   Utiliser un item sur un objet

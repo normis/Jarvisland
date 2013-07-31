@@ -1,5 +1,6 @@
 package org.jarvisland.level.level1;
 
+import org.jarvisland.InventoryManager;
 import org.jarvisland.LevelManager;
 import org.jarvisland.levels.room.AbstractRoom;
 import org.jarvisland.levels.room.Room;
@@ -19,11 +20,12 @@ public class Puit extends AbstractRoom {
 	public String execute(String s) {
 		if (s.matches("UTILISER.* GRAPPIN")) {
 			utiliserGrappin = true;
+			InventoryManager.getInstance().removeItem("GRAPPIN");
 			LevelManager.getInstance().notifyCurrentLevel("outOfPuit");
 			return "Vous avez eviter la mort! \n"
 					+ "Vous etes acrocher au mur.\n"
 					+ "Vous remonter a l'aide du grappin jusqu'a un surplomb. \n\n"
-					+ LevelManager.getInstance().changeLevel("Surplomb");
+					+ LevelManager.getInstance().getCurrentLevel().changeRoom("Surplomb");
 		}
 		return null;
 	}
