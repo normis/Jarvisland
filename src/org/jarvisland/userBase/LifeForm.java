@@ -1,3 +1,4 @@
+
 package org.jarvisland.userBase;
 
 public interface LifeForm{
