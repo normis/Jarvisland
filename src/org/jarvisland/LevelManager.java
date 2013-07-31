@@ -53,7 +53,7 @@ public class LevelManager {
 		return currentLevel;
 	}
 	
-	public void notifyCurrentLevel(String string) throws RoomNotAccessibleException {
+	public void notifyCurrentLevel(String string) {
 		currentLevel.notify(string);
 	}
 }
