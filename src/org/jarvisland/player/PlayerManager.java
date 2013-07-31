@@ -6,13 +6,13 @@ package org.jarvisland.player;
 /**
  * Classe servant à gérer la situation des joueurs (changement de niveau,
  * perte de vie, la mort, etc...). Contient la liste des attaques.
- * @author normis / Simon
  *
  */
 
-import java.util.List;
+import java.util.ArrayList;
 
 import org.jarvisland.userBase.Attaque;
+import org.jarvisland.userBase.UserAttaqueException;
 import org.jarvisland.userBase.UserBase;
 import org.jarvisland.userBase.UserLifeException;
 
@@ -23,7 +23,7 @@ public class PlayerManager implements UserBase{
 	private int level;
 	private boolean dead;
 	private String name;
-	private List<Attaque> listAttaque;
+	private ArrayList<Attaque> listAttaque;
 	private static PlayerManager instance = new PlayerManager();
 
 	
@@ -33,6 +33,11 @@ public class PlayerManager implements UserBase{
 		level = 0;
 		dead = false;
 		vie = vieInitial;
+		listAttaque = new ArrayList<Attaque>();
+		listAttaque.add(new Attaque("kick", 15));
+		listAttaque.add(new Attaque("puch", 10));
+		listAttaque.add(new Attaque("ERROR 404", 0));
+		listAttaque.add(new Attaque("IT'S OVER 9000!!!", 9000));
 	}
 
 	public static PlayerManager getInstance() {
@@ -92,7 +97,7 @@ public class PlayerManager implements UserBase{
 		level = newLevel;
 	}
 
-	public String attaque(UserBase user, String nameAttaque) throws UserLifeException {
+	public String attaque(UserBase user, String nameAttaque) throws UserAttaqueException, UserLifeException {
 		int dommage = 0;
 		String attaque = "";
 		for(Attaque atk : listAttaque)
@@ -114,13 +119,13 @@ public class PlayerManager implements UserBase{
 		vie = life;
 	}
 	
-	public void AfficherStat()
+	public void AfficherStats()
 	{
-		System.out.println("Votre nombre de vie:est de "+ vie + " sur " + vieInitial);
+		System.out.println("Votre nombre de vie est de "+ vie + " sur " + vieInitial);
 		System.out.println("Vos attaques sont: ");
 		for(Attaque atk :listAttaque)
 		{
-			System.out.println(atk.getNom() + " qui fais " + atk.getNbrDegats());
+			System.out.println(atk.getNom() + " qui fais " + atk.getNbrDegats() + " de dommage");
 		}
 	}
 }

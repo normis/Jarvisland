@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 import org.jarvisland.level.LevelEndedException;
 import org.jarvisland.levels.room.RoomNotAccessibleException;
+import org.jarvisland.player.PlayerManager;
 
 /**
  * Moteur du jeu Jarvisland
@@ -27,7 +28,8 @@ public class JarvislandEngine {
 
 	private BufferedReader bufferedReader;
 	private PrintStream printStream;
-	
+	private int nbTours = 0;
+
 	/**
 	 * Le constructeur prend en paramètre une pièce de départ et la charge.
 	 * 
@@ -40,7 +42,7 @@ public class JarvislandEngine {
 		System.out.println("Entrez 'aide' pour voir les commandes");
 		System.out.println("=====================================");
 		System.out.println();
-		
+
 		this.bufferedReader = new BufferedReader(new InputStreamReader(is));
 		this.printStream = ps;
 
@@ -70,7 +72,7 @@ public class JarvislandEngine {
 	 * @throws RoomNotAccessibleException
 	 */
 	private void prompt() {
-
+		++nbTours;
 		try {
 			printStream.print(">");
 			execute(bufferedReader.readLine());
@@ -96,11 +98,13 @@ public class JarvislandEngine {
 			afficherAide();
 		} else if (commande.matches("(ALLO|BONJOUR|SALUT).*")) {
 			put(HelloWorld.SayHi());
+		} else if (commande.matches("STATS")) {
+			afficherStats();
 		} else {
 			String test = LevelManager.getInstance().getCurrentLevel()
 					.execute(commande);
-			
-			put(test != null ? test : "La commande n'est pas valide" );
+
+			put(test != null ? test : "La commande n'est pas valide");
 		}
 
 	}
@@ -128,6 +132,15 @@ public class JarvislandEngine {
 	 */
 	private void afficherInventaire() {
 		InventoryManager.getInstance().afficher();
+		prompt();
+	}
+
+	/**
+	 * Affiche les statistique du joueur
+	 * 
+	 */
+	private void afficherStats() {
+		PlayerManager.getInstance().AfficherStats();
 		prompt();
 	}
 
