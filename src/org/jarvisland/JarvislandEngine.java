@@ -3,7 +3,6 @@ package org.jarvisland;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.Scanner;
 
 import org.jarvisland.level.LevelEndedException;
@@ -24,18 +23,21 @@ import org.jarvisland.levels.room.RoomNotAccessibleException;
  */
 public class JarvislandEngine {
 
+	private BufferedReader bufferedReader;
 	/**
 	 * Le constructeur prend en paramètre une pièce de départ et la charge.
 	 * 
 	 * @param startRoom
 	 * @throws RoomNotAccessibleException
 	 */
-	public JarvislandEngine() {
+	public JarvislandEngine(BufferedReader br) {
 		System.out.println("=====================================");
 		System.out.println("Bienvenue à Jarvisland!");
 		System.out.println("Entrez 'aide' pour voir les commandes");
 		System.out.println("=====================================");
 		System.out.println();
+		
+		this.bufferedReader = br;
 
 		LevelManager.getInstance().nextLevel();
 		put(LevelManager.getInstance().getCurrentLevel().look());
@@ -65,10 +67,8 @@ public class JarvislandEngine {
 	private void prompt() {
 
 		try {
-			BufferedReader br = new BufferedReader(new InputStreamReader(
-					System.in, "UTF-8"));
 			System.out.print(">");
-			execute(br.readLine());
+			execute(bufferedReader.readLine());
 		} catch (LevelEndedException lle) {
 			checkCompleted();
 		} catch (IOException e) {
@@ -94,11 +94,8 @@ public class JarvislandEngine {
 		} else {
 			String test = LevelManager.getInstance().getCurrentLevel()
 					.execute(commande);
-			if (test == null) {
-				put("La commande n'est pas valide");
-			} else {
-				put(test);
-			}
+			
+			put(test != null ? test : "La commande n'est pas valide" );
 		}
 
 	}
