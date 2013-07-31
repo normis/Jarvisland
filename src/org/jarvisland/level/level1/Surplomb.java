@@ -1,5 +1,6 @@
 package org.jarvisland.level.level1;
 
+import org.jarvisland.LevelManager;
 import org.jarvisland.levels.room.AbstractRoom;
 import org.jarvisland.levels.room.Room;
 import org.jarvisland.levels.room.RoomNotAccessibleException;
@@ -25,20 +26,23 @@ public class Surplomb extends AbstractRoom {
 			utiliserLampe = true;
 			return "Il fait maintenant clair.";
 		}
-		else if (s.matches("UTILISER.* ROCHE") && pritRoche)
+		else if (s.matches("UTILISER.* ROCHE") && pritRoche){
 			utiliserRoche = true;
+			return "Roche : Aaaaaaaaaoutch!\n";
+		}
+			
 		return null;
 	}
 
 	public Room south() throws RoomNotAccessibleException {
-		if (!utiliserLampe)
+		if (utiliserLampe)
 			throw new RoomNotAccessibleException("Vous voyez un mur de roche");
 		else
 			throw new RoomNotAccessibleException("Il fait noir");
 	}
 
 	public Room east() throws RoomNotAccessibleException {
-		if (!utiliserLampe)
+		if (utiliserLampe)
 			throw new RoomNotAccessibleException(
 					"Il y a un tas de roche avec une qui a une inscription.\n"
 							+ "L'inscription mentionne Cliff.");
@@ -47,7 +51,7 @@ public class Surplomb extends AbstractRoom {
 	}
 
 	public Room west() throws RoomNotAccessibleException {
-		if (!utiliserLampe)
+		if (utiliserLampe)
 			throw new RoomNotAccessibleException(
 					"Vous voyez le puis d'ou vous venez, voulez-vous vraiment y retourner ?");
 		else
@@ -55,9 +59,11 @@ public class Surplomb extends AbstractRoom {
 	}
 
 	public Room north() throws RoomNotAccessibleException {
-		if (!utiliserLampe)
+		if (utiliserLampe && !utiliserRoche)
 			throw new RoomNotAccessibleException(
 					"Vous apercevez quelques planches pourites qui semblent assez faible.");
+		else if(utiliserLampe && utiliserRoche)
+			throw new RoomNotAccessibleException(LevelManager.getInstance().changeRoom("Enigme"));
 		else
 			throw new RoomNotAccessibleException("Il fait noir");
 	}

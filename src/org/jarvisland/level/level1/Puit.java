@@ -22,7 +22,8 @@ public class Puit extends AbstractRoom {
 			LevelManager.getInstance().notifyCurrentLevel("outOfPuit");
 			return "Vous avez eviter la mort! \n"
 					+ "Vous etes acrocher au mur.\n"
-					+ "Vous remonter a l'aide du grappin jusqu'a un surplomb. \n";
+					+ "Vous remonter a l'aide du grappin jusqu'a un surplomb. \n\n"
+					+ LevelManager.getInstance().changeLevel("Surplomb");
 		}
 		return null;
 	}

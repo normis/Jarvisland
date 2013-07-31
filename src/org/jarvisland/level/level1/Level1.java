@@ -10,8 +10,10 @@ public class Level1 extends AbstractLevel {
 	boolean outOfEnigme = false;
 
 	public Level1() {
-		map.put("someRule", new Puit());
-		room = map.get("someRule");
+		map.put("Puit", new Puit());
+		map.put("Surplomb", new Surplomb());
+		map.put("Enigme", new Enigme());
+		room = map.get("Puit");
 		InventoryManager.getInstance().addItem("Bouteille de vin");
 		InventoryManager.getInstance().addItem("Lampe de poche");
 		InventoryManager.getInstance().addItem("Grappin");
@@ -26,10 +28,8 @@ public class Level1 extends AbstractLevel {
 	@Override
 	public void notify(String event) {
 		System.out.println("notify");
-		if (event.equals("outOfPuit")) {
+		if (event.equals("outOfPuit"))
 			outOfPuit = true;
-			new Surplomb();
-		}
 		// TODO Auto-generated method stub
 
 	}
@@ -37,11 +37,5 @@ public class Level1 extends AbstractLevel {
 	@Override
 	public String getName() {
 		return "Niveau Un";// u r falling down
-	}
-
-	@Override
-	public Room getRoom(String room){
-		return map.get(room);
-		
 	}
 }
