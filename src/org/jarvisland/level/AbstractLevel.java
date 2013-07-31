@@ -16,7 +16,7 @@ public abstract class AbstractLevel implements Level {
 	protected Map<String, Room> map = new HashMap<String, Room>();
 	
 	
-	public String navigate(String direction) throws RoomNotAccessibleException {
+	public String navigate(String direction) {
 		Room nextRoom = null;
 
 		try {
@@ -41,7 +41,7 @@ public abstract class AbstractLevel implements Level {
 	}
 
 	@Override
-	public String execute(String commande) throws RoomNotAccessibleException {
+	public String execute(String commande) {
 		commande = commande.toUpperCase();
 
 		if (commande.matches("NORD|SUD|EST|OUEST")) {

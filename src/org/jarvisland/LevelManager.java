@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import org.jarvisland.level.Level;
 import org.jarvisland.level.level0.Level0;
 import org.jarvisland.level.level1.Level1;
+import org.jarvisland.levels.room.RoomNotAccessibleException;
 
 /**
  * Gestion des niveaux de Jarvisland
@@ -25,7 +26,7 @@ public class LevelManager {
 	
 	private LevelManager() {
 		levels = new LinkedList<Level>();
-		//levels.add(new Level0());
+		levels.add(new Level0());
 		levels.add(new Level1());
 	}
 	
@@ -33,7 +34,7 @@ public class LevelManager {
 		return instance;
 	}
 	
-	public Level nextLevel() {
+	public Level nextLevel() throws RoomNotAccessibleException {
 		System.out.println();
 		
 		if (levels.size() == 0) {
@@ -52,7 +53,7 @@ public class LevelManager {
 		return currentLevel;
 	}
 	
-	public void notifyCurrentLevel(String string) {
+	public void notifyCurrentLevel(String string) throws RoomNotAccessibleException {
 		currentLevel.notify(string);
 	}
 }

@@ -22,7 +22,7 @@ public interface Level {
 	 * Définit si le niveau est terminé
 	 * @return isCompleted
 	 */
-	public boolean isCompleted();
+	public boolean isCompleted()throws RoomNotAccessibleException;
 	
 	/**
 	 * Déplacement dans une direction donnée
@@ -31,7 +31,7 @@ public interface Level {
 	 * @return 
 	 * @throws RoomNotAccessibleException
 	 */
-	public String navigate(String direction);
+	public String navigate(String direction)throws RoomNotAccessibleException;
 	
 	/**
 	 * Traitement d'une commande
@@ -40,14 +40,14 @@ public interface Level {
 	 * @return résultat
 	 * @throws RoomNotAccessibleException 
 	 */
-	public String execute(String commande);
+	public String execute(String commande)throws RoomNotAccessibleException;
 	
 	/**
 	 * Description de la pièce
 	 * 
 	 * @return description
 	 */
-	public String look();
+	public String look()throws RoomNotAccessibleException;
 	
 	/**
 	 * Traitement d'événement qui se passe dans le niveau comme
@@ -55,21 +55,21 @@ public interface Level {
 	 * 
 	 * @param event
 	 */
-	public void notify(String event);
+	public void notify(String event)throws RoomNotAccessibleException;
 	
 	/**
 	 * Nom du niveau
 	 * 
 	 * @return nom
 	 */
-	public String getName();
+	public String getName()throws RoomNotAccessibleException;
 	
 	/**
 	 * Nom de la room actuel
 	 * 
 	 * @return nom
 	 */
-	public Room getRoom(String room);
+	public Room getRoom(String room)throws RoomNotAccessibleException;
 	
 	
 }
