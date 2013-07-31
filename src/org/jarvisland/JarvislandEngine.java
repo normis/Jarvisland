@@ -7,7 +7,6 @@ import java.io.InputStreamReader;
 import java.util.Scanner;
 
 import org.jarvisland.level.LevelEndedException;
-import org.jarvisland.levels.room.RoomNotAccessibleException;
 
 /**
  * Moteur du jeu Jarvisland
@@ -88,15 +87,7 @@ public class JarvislandEngine {
 		} else if (commande.matches("(ALLO|BONJOUR|SALUT).*")) {
 			put(HelloWorld.SayHi());
 		}  else {
-			try {
-				String resultat = LevelManager.getInstance().getCurrentLevel().execute(commande);
-				
-				// Vérifier si l'action a déclancher la fin du niveau
-				if (checkCompleted() == false)
-					put(resultat != null ? resultat : "Je ne comprends pas cette action.");
-			} catch (RoomNotAccessibleException e) {
-				put(e.getMessage());
-			}
+			put(LevelManager.getInstance().getCurrentLevel().execute(commande));
 		}
 			
 	}
