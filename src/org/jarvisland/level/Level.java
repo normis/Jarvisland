@@ -54,7 +54,7 @@ public interface Level {
 	 * 
 	 * @param event
 	 */
-	public void notify(String event)throws RoomNotAccessibleException;
+	public void notify(String event);
 	
 	/**
 	 * Nom du niveau
