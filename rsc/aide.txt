@@ -11,3 +11,7 @@ Prendre (item)          Ajouter un item dans l'inventaire
 Utiliser (item)         Utiliser un item
 Utiliser (item) (obj)   Utiliser un item sur un objet
 Stats                   Afficher vos statistique
+
+== Lors d'un combat ==
+Attaque (nom)           Attaque un ennemi
+Liste attaque           Affiche la liste d'attaque 

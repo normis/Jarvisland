@@ -101,19 +101,22 @@ public class PlayerManager implements LifeForm{
 
 	public String attaque(LifeForm user, String nameAttaque) throws UserLifeException {
 		int dommage = 0;
-		String attaque = "";
+		String attaque = null;
 		for(Attaque atk : listAttaque)
 		{
-			if (atk.getDescription().contains(nameAttaque))
+			if (atk.getDescription().toUpperCase().contains(nameAttaque))
 			{
 				dommage = atk.getDommage();
 				attaque = atk.getDescription();
+				break;
 			}
 			//TODO: ne pas faire 0 de dommage si le non de l'attaque n'existe pas
 		}
-		user.dropLife(dommage);
-		
-		return "Vous avez utilisez l'attaque: " + attaque;
+		if(attaque != null){
+			user.dropLife(dommage);
+			return "Vous avez utilisez l'attaque: " + attaque;
+		}
+		return attaque;
 	}
 
 	public void setBaseLife(int life) {
@@ -127,11 +130,18 @@ public class PlayerManager implements LifeForm{
 		System.out.println("Vos attaques sont: ");
 		for(Attaque atk :listAttaque)
 		{
-			System.out.println(atk.getDescription() + " qui fais " + atk.getDommage());
+			System.out.println(atk.getDescription());
 		}
 	}
 
 	public String mourir() {
 		return "VOUS ETES MORTTTTTTTTTTTTT";
+	}
+
+	public void listeAttaque() {
+		for(Attaque atk :listAttaque)
+		{
+			System.out.println(atk.getDescription());
+		}
 	}
 }
