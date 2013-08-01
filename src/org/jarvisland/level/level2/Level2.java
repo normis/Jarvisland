@@ -2,6 +2,7 @@ package org.jarvisland.level.level2;
 
 import org.jarvisland.level.AbstractLevel;
 import org.jarvisland.level.LevelEndedException;
+import org.jarvisland.levels.room.Room;
 
 /**
  * Le level 0 est un petit niveau tutoriel qui ne possède
@@ -25,7 +26,7 @@ public class Level2 extends AbstractLevel {
 		map.put("hall", new HallRoom());
 		map.put("trone", new TroneRoom());
 		map.put("dongeon", new DongeauRoom());
-		room = map.get("foret");
+		initialiserLevel();
 	}
 	
 	@Override
@@ -46,4 +47,14 @@ public class Level2 extends AbstractLevel {
 		return "Niveau 2 - Le chateau";
 	}
 
+	@Override
+	public Room getInitialRoom() {
+		return map.get("forest");
+	}
+
+	@Override
+	public void initialiserLevel() {
+		super.initialiserLevel();
+		isOutOfFirstRoom = false;
+	}
 }

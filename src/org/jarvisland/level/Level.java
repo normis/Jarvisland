@@ -84,5 +84,7 @@ public interface Level {
 	 */
 	public void initialiserLevel();
 	
+	public Room getInitialRoom();
+	
 	
 }
