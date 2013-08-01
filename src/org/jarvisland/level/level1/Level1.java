@@ -3,6 +3,7 @@ package org.jarvisland.level.level1;
 import org.jarvisland.InventoryManager;
 import org.jarvisland.level.AbstractLevel;
 import org.jarvisland.level.LevelEndedException;
+import org.jarvisland.levels.room.Room;
 import org.jarvisland.player.DeathException;
 
 public class Level1 extends AbstractLevel {
@@ -69,12 +70,16 @@ public class Level1 extends AbstractLevel {
 
 	@Override
 	public void initialiserLevel() {
-		room = map.get("Puit");
-		room.initialiser();
+		super.initialiserLevel();
 
 		outOfPuit = false;
 		outOfSurplomb = false;
 		outOfEnigme = false;
 		outOfWine = false;
+	}
+
+	@Override
+	public Room getInitialRoom() {
+		return map.get("Puit");
 	}
 }

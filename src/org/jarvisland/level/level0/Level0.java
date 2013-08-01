@@ -1,8 +1,8 @@
 package org.jarvisland.level.level0;
 
-import org.jarvisland.InventoryManager;
 import org.jarvisland.level.AbstractLevel;
 import org.jarvisland.level.LevelEndedException;
+import org.jarvisland.levels.room.Room;
 
 /**
  * Le level 0 est un petit niveau tutoriel qui ne possède
@@ -41,10 +41,13 @@ public class Level0 extends AbstractLevel {
 
 	@Override
 	public void initialiserLevel() {
-		room = map.get("tutorial");	
-		room.initialiser();
-		
+		super.initialiserLevel();
 		isOutOfFirstRoom = false;
+	}
+
+	@Override
+	public Room getInitialRoom() {
+		return map.get("tutorial");	
 	}
 
 }
