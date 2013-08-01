@@ -15,7 +15,7 @@ public class Surplomb extends AbstractRoom {
 	@Override
 	public String look() {
 		if (utiliserLampe)
-			return "Vous vous retrouvez dans une grotte.\n";
+			return "Vous vous retrouvez dans une grotte.";
 		else
 			return "Il fait noir";
 	}
