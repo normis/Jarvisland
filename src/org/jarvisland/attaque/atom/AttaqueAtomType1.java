@@ -1,4 +1,6 @@
-package org.jarvisland.attaque;
+package org.jarvisland.attaque.atom;
+
+import org.jarvisland.attaque.TypeAttaque;
 
 public class AttaqueAtomType1 extends TypeAttaque{
 	@Override

@@ -1,9 +1,9 @@
 package org.jarvisland.userBase;
 
 import org.jarvisland.attaque.Attaque;
-import org.jarvisland.attaque.AttaqueAtomType1;
-import org.jarvisland.attaque.AttaqueAtomType2;
-import org.jarvisland.attaque.AttaqueAtomType3;
+import org.jarvisland.attaque.atom.AttaqueAtomType1;
+import org.jarvisland.attaque.atom.AttaqueAtomType2;
+import org.jarvisland.attaque.atom.AttaqueAtomType3;
 
 public class AtomMonster extends Monster {
 	

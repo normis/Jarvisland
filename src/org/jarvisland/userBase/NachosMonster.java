@@ -1,10 +1,10 @@
 package org.jarvisland.userBase;
 
 import org.jarvisland.attaque.Attaque;
-import org.jarvisland.attaque.AttaqueNachosType1;
-import org.jarvisland.attaque.AttaqueNachosType2;
-import org.jarvisland.attaque.AttaqueNachosType3;
-import org.jarvisland.attaque.AttaqueNachosType4;
+import org.jarvisland.attaque.nachos.AttaqueNachosType1;
+import org.jarvisland.attaque.nachos.AttaqueNachosType2;
+import org.jarvisland.attaque.nachos.AttaqueNachosType3;
+import org.jarvisland.attaque.nachos.AttaqueNachosType4;
 
 public class NachosMonster extends Monster {
 	

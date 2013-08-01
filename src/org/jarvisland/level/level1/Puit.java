@@ -20,7 +20,7 @@ public class Puit extends AbstractRoom {
 	public String execute(String s) {
 		if (s.matches("UTILISER.* GRAPPIN")) {
 			utiliserGrappin = true;
-			InventoryManager.getInstance().removeItem("GRAPPIN");
+			InventoryManager.getInstance().removeItem("Grappin");
 			LevelManager.getInstance().notifyCurrentLevel("outOfPuit");
 			return "Vous avez eviter la mort! \n"
 					+ "Vous etes acrocher au mur.\n"

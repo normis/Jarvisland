@@ -1,9 +1,7 @@
 package org.jarvisland.player;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-
-import org.jarvisland.attaque.Attaque;
+import static org.junit.Assert.fail;
 import org.junit.Test;
 
 public class PlayerTest {
@@ -12,7 +10,10 @@ public class PlayerTest {
 	public void testPlayerConstructeur() {
 		PlayerManager.getInstance().setBaseLife(60);
 		assertTrue(PlayerManager.getInstance().getVie() == 60);
+		try{
 		PlayerManager.getInstance().dropLife(70);
-		assertTrue(PlayerManager.getInstance().isDead());
+		fail();
+		} catch(DeathException De){
+		}
 	}
 }

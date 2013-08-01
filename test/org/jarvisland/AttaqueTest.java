@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.jarvisland.attaque.Attaque;
-import org.jarvisland.attaque.AttaqueNachosType1;
+import org.jarvisland.attaque.nachos.AttaqueNachosType1;
 import org.jarvisland.player.PlayerManager;
 import org.jarvisland.userBase.LifeForm;
 import org.jarvisland.userBase.MonsterFactory;

@@ -1,4 +1,6 @@
-package org.jarvisland.attaque;
+package org.jarvisland.attaque.nachos;
+
+import org.jarvisland.attaque.TypeAttaque;
 
 public class AttaqueNachosType4 extends TypeAttaque {
 
