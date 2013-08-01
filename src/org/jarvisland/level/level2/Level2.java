@@ -23,7 +23,7 @@ public class Level2 extends AbstractLevel {
 		map.put("tour", new TourRoom());
 		map.put("hall", new HallRoom());
 		map.put("trone", new TroneRoom());
-		map.put("dongeon", new DongeauRoom());
+		map.put("dongeon", new DongeonRoom());
 		initialiserLevel();
 	}
 	
