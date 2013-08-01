@@ -1,5 +1,6 @@
 package org.jarvisland.level.level2;
 
+import org.jarvisland.CombatManager;
 import org.jarvisland.LevelManager;
 import org.jarvisland.levels.room.AbstractMonsterRoom;
 import org.jarvisland.levels.room.AbstractRoom;
@@ -15,7 +16,8 @@ public class HallRoom extends AbstractMonsterRoom implements Room {
 	@Override
 	public String look() {
 		if (!monster.isDead()) {
-			// TODO : Combat
+			CombatManager cm = new CombatManager(monster);
+			cm.DemarrerCombat();
 		}
 			
 		return "Vous êtes dans le hall.";

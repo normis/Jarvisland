@@ -54,7 +54,8 @@ public class CombatManager {
 		commande = commande.toUpperCase();
 
 		if (commande.matches("ATTAQUE .*")) {
-			commande = commande.substring(7);
+			commande = commande.substring(8);
+			System.out.println(commande);
 			LancerAttaque(commande);
 		}
 		else if (commande.matches("LISTE ATTAQUE"))
