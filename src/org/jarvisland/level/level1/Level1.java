@@ -64,7 +64,7 @@ public class Level1 extends AbstractLevel {
 
 	@Override
 	public String getName() {
-		return "Niveau Un";// u r falling down
+		return "Niveau 1 - La chute";// u r falling down
 	}
 
 	@Override

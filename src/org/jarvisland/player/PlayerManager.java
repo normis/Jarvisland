@@ -11,8 +11,11 @@ package org.jarvisland.player;
 
 import java.util.ArrayList;
 
-import org.jarvisland.userBase.Attaque;
-import org.jarvisland.userBase.UserAttaqueException;
+import org.jarvisland.attaque.Attaque;
+import org.jarvisland.attaque.player.AttaqueFail;
+import org.jarvisland.attaque.player.AttaquePied;
+import org.jarvisland.attaque.player.AttaquePoing;
+import org.jarvisland.attaque.player.AttaqueSpecial;
 import org.jarvisland.userBase.LifeForm;
 import org.jarvisland.userBase.UserLifeException;
 
@@ -34,10 +37,10 @@ public class PlayerManager implements LifeForm{
 		dead = false;
 		vie = vieInitial;
 		listAttaque = new ArrayList<Attaque>();
-		listAttaque.add(new Attaque("kick", 15));
-		listAttaque.add(new Attaque("puch", 10));
-		listAttaque.add(new Attaque("ERROR 404", 0));
-		listAttaque.add(new Attaque("IT'S OVER 9000!!!", 9000));
+		listAttaque.add(new AttaquePied());
+		listAttaque.add(new AttaquePoing());
+		listAttaque.add(new AttaqueFail());
+		listAttaque.add(new AttaqueSpecial());
 	}
 
 	public static PlayerManager getInstance() {
@@ -75,12 +78,10 @@ public class PlayerManager implements LifeForm{
 		}
 	}
 
-	@Override
 	public void addAttaque(Attaque atk) {
 		listAttaque.add(atk);
 	}
 
-	@Override
 	public void removeAttaque(Attaque atk) {
 		listAttaque.remove(atk);
 	}
@@ -98,15 +99,15 @@ public class PlayerManager implements LifeForm{
 		level = newLevel;
 	}
 
-	public String attaque(LifeForm user, String nameAttaque) throws UserAttaqueException, UserLifeException {
+	public String attaque(LifeForm user, String nameAttaque) throws UserLifeException {
 		int dommage = 0;
 		String attaque = "";
 		for(Attaque atk : listAttaque)
 		{
-			if (atk.getNom().contains(nameAttaque))
+			if (atk.getDescription().contains(nameAttaque))
 			{
-				dommage = atk.getNbrDegats();
-				attaque = atk.getNom();
+				dommage = atk.getDommage();
+				attaque = atk.getDescription();
 			}
 			//TODO: ne pas faire 0 de dommage si le non de l'attaque n'existe pas
 		}
@@ -126,7 +127,7 @@ public class PlayerManager implements LifeForm{
 		System.out.println("Vos attaques sont: ");
 		for(Attaque atk :listAttaque)
 		{
-			System.out.println(atk.getNom() + " qui fais " + atk.getNbrDegats() + " de dommage");
+			System.out.println(atk.getDescription() + " qui fais " + atk.getDommage());
 		}
 	}
 

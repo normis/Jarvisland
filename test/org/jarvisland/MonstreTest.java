@@ -3,8 +3,8 @@ package org.jarvisland;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import org.jarvisland.attaque.Attaque;
 import org.jarvisland.userBase.AtomMonsterFactory;
-import org.jarvisland.userBase.Attaque;
 import org.jarvisland.userBase.Monster;
 import org.jarvisland.userBase.MonsterFactory;
 import org.junit.Test;

@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import org.jarvisland.level.Level;
 import org.jarvisland.level.level0.Level0;
 import org.jarvisland.level.level1.Level1;
+import org.jarvisland.level.level2.Level2;
 
 /**
  * Gestion des niveaux de Jarvisland
@@ -25,8 +26,9 @@ public class LevelManager {
 	
 	private LevelManager() {
 		levels = new LinkedList<Level>();
-		levels.add(new Level0());
+		//levels.add(new Level0());
 		levels.add(new Level1());
+		levels.add(new Level2());
 	}
 	
 	public static LevelManager getInstance() {

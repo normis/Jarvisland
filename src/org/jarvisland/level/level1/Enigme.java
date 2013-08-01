@@ -52,7 +52,7 @@ public class Enigme extends AbstractRoom {
 	@Override
 	public Room west() throws RoomNotAccessibleException {
 		throw new RoomNotAccessibleException(
-				"Il y un message ecrit sur le mur avec se qui semble etre du sang vous liser, Isaac Asimov");
+				"Il y un message ecrit sur le mur avec se qui semble etre du sang vous liser, Douglas Adams");
 	}
 
 	@Override

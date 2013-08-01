@@ -1,6 +1,5 @@
-package org.jarvisland.level.level0;
+package org.jarvisland.level.level2;
 
-import org.jarvisland.InventoryManager;
 import org.jarvisland.level.AbstractLevel;
 import org.jarvisland.level.LevelEndedException;
 
@@ -11,14 +10,22 @@ import org.jarvisland.level.LevelEndedException;
  * @author niclupien
  *
  */
-public class Level0 extends AbstractLevel {
+public class Level2 extends AbstractLevel {
 
-	boolean isOutOfFirstRoom;
+	boolean isOutOfFirstRoom = false;
 	
 	
-	public Level0() {
-		map.put("tutorial", new TutorialRoom());
-		initialiserLevel();		
+	public Level2() {
+		map.put("foret", new ForetRoom());
+		map.put("chateau", new ChateauRoom());
+		map.put("cour", new CourRoom());
+		map.put("chambre", new ChambreRoom());
+		map.put("cuisine", new CusineRoom());
+		map.put("tour", new TourRoom());
+		map.put("hall", new HallRoom());
+		map.put("trone", new TroneRoom());
+		map.put("dongeon", new DongeauRoom());
+		room = map.get("foret");
 	}
 	
 	@Override
@@ -36,15 +43,7 @@ public class Level0 extends AbstractLevel {
 
 	@Override
 	public String getName() {
-		return "Tutoriel - Le commencement";
-	}
-
-	@Override
-	public void initialiserLevel() {
-		room = map.get("tutorial");	
-		room.initialiser();
-		
-		isOutOfFirstRoom = false;
+		return "Niveau 2 - Le chateau";
 	}
 
 }
