@@ -49,4 +49,9 @@ public class Puit extends AbstractRoom {
 			throw new RoomNotAccessibleException(
 					"Les murs defilent a trop grande vitesse pour s'agripper.");
 	}
+
+	@Override
+	public void initialiser() {
+		utiliserGrappin = false;		
+	}
 }

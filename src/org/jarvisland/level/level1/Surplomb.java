@@ -79,4 +79,12 @@ public class Surplomb extends AbstractRoom {
 		else
 			throw new RoomNotAccessibleException("Il fait noir");
 	}
+
+	@Override
+	public void initialiser() {
+		utiliserLampe = false;
+		pritRoche = false;
+		utiliserRoche = false;
+		veutTomber = false;		
+	}
 }

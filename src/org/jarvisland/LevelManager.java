@@ -55,4 +55,9 @@ public class LevelManager {
 	public void notifyCurrentLevel(String string) {
 		currentLevel.notify(string);
 	}
+
+	public void resetLevel() {
+		currentLevel.initialiserLevel();
+		InventoryManager.getInstance().reinitialiser();
+	}
 }

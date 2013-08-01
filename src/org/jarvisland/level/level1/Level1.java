@@ -3,7 +3,6 @@ package org.jarvisland.level.level1;
 import org.jarvisland.InventoryManager;
 import org.jarvisland.level.AbstractLevel;
 import org.jarvisland.level.LevelEndedException;
-import org.jarvisland.levels.room.Room;
 import org.jarvisland.player.DeathException;
 
 public class Level1 extends AbstractLevel {
@@ -12,17 +11,14 @@ public class Level1 extends AbstractLevel {
 	boolean outOfEnigme = false;
 	boolean outOfWine = false; // that's sad
 
-	String messageFinLevel = "Vous grimper une echelle et vous atteigner enfin l'exterieur! La roche engraver par les runes \" cliff \" se met a parler \n "
+	private final String messageFinLevel = "Vous grimper une echelle et vous atteigner enfin l'exterieur! La roche engraver par les runes \" cliff \" se met a parler \n "
 			+ "-Cliff: Vous devez allez sauve la princesse Jarvis!";
 
 	public Level1() {
 		map.put("Puit", new Puit());
 		map.put("Surplomb", new Surplomb());
 		map.put("Enigme", new Enigme());
-		room = map.get("Puit");
-		InventoryManager.getInstance().addItem("Bouteille de vin");
-		InventoryManager.getInstance().addItem("Lampe de poche");
-		InventoryManager.getInstance().addItem("Grappin");
+		initialiserLevel();
 	}
 
 	@Override
@@ -32,7 +28,7 @@ public class Level1 extends AbstractLevel {
 			if (s.matches("(UTILISER|BOIRE).* BOUTEILLE DE VIN") && !outOfWine) {
 				InventoryManager.getInstance().removeItem("Bouteille de vin");
 				outOfWine = true;
-				return "Vous ne vous senter pas bien et vous vous assoyer quel que seconde, vous retoruner la bouteille et \n "
+				return "Vous ne vous senter pas bien et vous vous assoyer quelque seconde, vous retoruner la bouteille et \n "
 						+ "apercever une tete de mort imprimer sur la bouteile.";
 			}
 		}
@@ -69,5 +65,16 @@ public class Level1 extends AbstractLevel {
 	@Override
 	public String getName() {
 		return "Niveau Un";// u r falling down
+	}
+
+	@Override
+	public void initialiserLevel() {
+		room = map.get("Puit");
+		room.initialiser();
+
+		outOfPuit = false;
+		outOfSurplomb = false;
+		outOfEnigme = false;
+		outOfWine = false;
 	}
 }
