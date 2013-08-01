@@ -2,20 +2,20 @@ package org.jarvisland.userBase;
 
 import java.util.ArrayList;
 
+import org.jarvisland.attaque.Attaque;
+
 public abstract class Monster implements LifeForm{
 
 	private String nom;
 	private int vie;
 	private int level;
 	private int baseLife;
-	private ArrayList<Attaque> arrAttaque;
 	
 	public Monster(String nom, int vie, int level){
 		this.nom = nom;
 		this.vie = vie;
 		this.baseLife = vie;
 		this.level = level;
-		arrAttaque = new ArrayList<Attaque>();
 	}	
 	
 	@Override
@@ -40,18 +40,13 @@ public abstract class Monster implements LifeForm{
 		vie = baseLife;
 	}
 
-	public String attaque(LifeForm user, String nameAttaque) throws UserAttaqueException, UserLifeException {
-		if(arrAttaque.size() > 0){
-			int tableauSize = arrAttaque.size() - 1;
-			int randomNum = 0 + (int)(Math.random()*tableauSize);
-			
-			Attaque attaque = arrAttaque.get(randomNum);
-			user.dropLife(attaque.getNbrDegats());
-			return user.getName() + " a utiliser l'attaque " + attaque.getNom();
-		}
-		else
-			throw new UserAttaqueException();
+	public String attaque(LifeForm user, String nameAttaque) throws UserLifeException {
+			Attaque attaque = getRandomAttaque();
+			attaque.attaque(user, attaque);
+			return getName() + " a utiliser l'attaque " + attaque.getDescription();
 	}
+	
+	public abstract Attaque getRandomAttaque();
 
 	@Override
 	public void dropLife(int loseLife) throws UserLifeException {
@@ -62,16 +57,6 @@ public abstract class Monster implements LifeForm{
 		}
 		else
 			throw new UserLifeException("L'usager " + getName() + " est déjà mort");
-	}
-
-	@Override
-	public void addAttaque(Attaque attaque) {
-		arrAttaque.add(attaque);
-	}
-
-	@Override
-	public void removeAttaque(Attaque attaque) {
-		arrAttaque.remove(attaque);
 	}
 
 	@Override

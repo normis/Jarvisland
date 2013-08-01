@@ -1,21 +1,32 @@
 package org.jarvisland.userBase;
 
+import org.jarvisland.attaque.Attaque;
+import org.jarvisland.attaque.AttaqueNachosType1;
+import org.jarvisland.attaque.AttaqueNachosType2;
+import org.jarvisland.attaque.AttaqueNachosType3;
+import org.jarvisland.attaque.AttaqueNachosType4;
+
 public class NachosMonster extends Monster {
+	
+	private final int nbAttaque = 4;
 
 	public NachosMonster(String nom, int vie, int level) {
 		super(nom, vie, level);
-				
-		Attaque attaque1 = new Attaque("Segmentation Fault", 30);
-		addAttaque(attaque1);
+	}
+
+	@Override
+	public Attaque getRandomAttaque() {
+		int randomNum = 1 + (int)(Math.random()*nbAttaque);
+		Attaque attaque = null;
 		
-		Attaque attaque2 = new Attaque("Bus Error", 20);
-		addAttaque(attaque2);
+		switch(randomNum){
+		case 1: attaque = new AttaqueNachosType1();
+		case 2: attaque = new AttaqueNachosType2();
+		case 3: attaque = new AttaqueNachosType3();
+		case 4: attaque = new AttaqueNachosType4();
+		}
 		
-		Attaque attaque3 = new Attaque("Page Fault", 25);
-		addAttaque(attaque3);
-		
-		Attaque attaque4 = new Attaque("Salsa extra forte", 40);
-		addAttaque(attaque4);
+		return attaque;
 	}
 	
 

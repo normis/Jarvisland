@@ -3,7 +3,7 @@ package org.jarvisland.player;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import org.jarvisland.userBase.Attaque;
+import org.jarvisland.attaque.Attaque;
 import org.junit.Test;
 
 public class PlayerTest {

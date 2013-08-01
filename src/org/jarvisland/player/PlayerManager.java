@@ -12,7 +12,7 @@ package org.jarvisland.player;
 
 import java.util.List;
 
-import org.jarvisland.userBase.Attaque;
+import org.jarvisland.attaque.Attaque;
 import org.jarvisland.userBase.LifeForm;
 import org.jarvisland.userBase.UserLifeException;
 
@@ -69,12 +69,10 @@ public class PlayerManager implements LifeForm{
 		}
 	}
 
-	@Override
 	public void addAttaque(Attaque atk) {
 		listAttaque.add(atk);
 	}
 
-	@Override
 	public void removeAttaque(Attaque atk) {
 		listAttaque.remove(atk);
 	}
@@ -97,10 +95,10 @@ public class PlayerManager implements LifeForm{
 		String attaque = "";
 		for(Attaque atk : listAttaque)
 		{
-			if (atk.getNom().contains(nameAttaque))
+			if (atk.getDescription().contains(nameAttaque))
 			{
-				dommage = atk.getNbrDegats();
-				attaque = atk.getNom();
+				dommage = atk.getDommage();
+				attaque = atk.getDescription();
 			}
 			//TODO: ne pas faire 0 de dommage si le non de l'attaque n'existe pas
 		}
@@ -120,7 +118,7 @@ public class PlayerManager implements LifeForm{
 		System.out.println("Vos attaques sont: ");
 		for(Attaque atk :listAttaque)
 		{
-			System.out.println(atk.getNom() + " qui fais " + atk.getNbrDegats());
+			System.out.println(atk.getDescription() + " qui fais " + atk.getDommage());
 		}
 	}
 }
