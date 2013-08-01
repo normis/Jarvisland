@@ -43,7 +43,7 @@ public class Level2 extends AbstractLevel {
 
 	@Override
 	public String getName() {
-		return "Le commencement";
+		return "Niveau 2 - Le chateau";
 	}
 
 }

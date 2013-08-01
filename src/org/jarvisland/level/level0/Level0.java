@@ -36,7 +36,7 @@ public class Level0 extends AbstractLevel {
 
 	@Override
 	public String getName() {
-		return "Le commencement";
+		return "Tutoriel - Le commencement";
 	}
 
 }

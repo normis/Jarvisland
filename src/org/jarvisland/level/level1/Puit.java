@@ -25,9 +25,8 @@ public class Puit extends AbstractRoom {
 			LevelManager.getInstance().notifyCurrentLevel("outOfPuit");
 			String look = LevelManager.getInstance().getCurrentLevel().changeRoom("Surplomb");
 			
-			return "Vous venez d'eviter la mort! \n" +
-					"Vous vous acrochez au mur et vous remontez à l'aide " +
-					"du grappin jusqu'à un surplomb." + look;
+			return "Vous venez d'eviter la mort! Vous vous acrochez au \n" +
+					"mur et vous remontez à l'aide du grappin jusqu'à un surplomb.\n" + look;
 		}
 		return null;
 	}
@@ -39,16 +38,16 @@ public class Puit extends AbstractRoom {
 
 	public Room east() throws RoomNotAccessibleException {
 		throw new RoomNotAccessibleException(
-				"Les murs defilent a trop grande vitesse pour s'agripper.");
+				"Les murs sont trop glissants. Vous ne pouvez pas vous agripper.");
 	}
 
 	public Room west() throws RoomNotAccessibleException {
 		throw new RoomNotAccessibleException(
-				"Les murs defilent a trop grande vitesse pour s'agripper.");
+				"Les murs sont trop glissants. Vous ne pouvez pas vous agripper.");
 	}
 
 	public Room north() throws RoomNotAccessibleException {
 			throw new RoomNotAccessibleException(
-					"Les murs defilent a trop grande vitesse pour s'agripper.");
+					"Les murs sont trop glissants. Vous ne pouvez pas vous agripper.");
 	}
 }
