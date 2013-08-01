@@ -4,9 +4,12 @@ import org.jarvisland.LevelManager;
 import org.jarvisland.levels.room.AbstractRoom;
 import org.jarvisland.levels.room.Room;
 import org.jarvisland.levels.room.RoomNotAccessibleException;
+import org.jarvisland.userBase.Monster;
 
 public class HallRoom extends AbstractRoom implements Room {
 
+	Monster atom;
+	
 	@Override
 	public String look() {
 		// TODO Auto-generated method stub

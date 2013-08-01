@@ -9,7 +9,8 @@ public class ForetRoom extends AbstractRoom implements Room {
 
 	@Override
 	public String look() {
-		return "Vous êtes dans une forêt";
+		return "Vous êtes dans une foret. Il y a un grand chateau à l'Est.\n" +
+				"Des cris proviennent de cette direction.";
 	}
 
 	@Override
