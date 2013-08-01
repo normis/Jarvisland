@@ -62,5 +62,8 @@ public class LevelManager {
 	public void resetLevel() {
 		currentLevel.initialiserLevel();
 		InventoryManager.getInstance().reinitialiser();
+		System.out.println();
+		System.out.println("== " + currentLevel.getName() + " ==");
+		System.out.println();
 	}
 }
