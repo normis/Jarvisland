@@ -76,4 +76,15 @@ public interface Level {
 	 * @return nom
 	 */
 	public Room getRoom(String room);	
+	
+	/**
+	 * Initialisation de la room
+	 * 
+	 * @return nom
+	 */
+	public void initialiserLevel();
+	
+	public Room getInitialRoom();
+	
+	
 }

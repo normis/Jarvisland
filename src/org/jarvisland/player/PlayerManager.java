@@ -135,7 +135,7 @@ public class PlayerManager implements LifeForm{
 	}
 
 	public String mourir() {
-		return "VOUS ETES MORTTTTTTTTTTTTT";
+		return "Game over";
 	}
 
 	public void listeAttaque() {

@@ -59,6 +59,7 @@ public abstract class AbstractLevel implements Level {
 
 	public String changeRoom(String newRoom) {
 		room = map.get(newRoom);
+		room.initialiser();
 		return room.look();
 	}
 
@@ -69,6 +70,17 @@ public abstract class AbstractLevel implements Level {
 	 */
 	public Room getRoom(String room) {
 		return map.get(room);
+	}
+	
+
+
+	@Override
+	public void initialiserLevel() {
+		room = getInitialRoom();
+		for(Room r : map.values()) {
+			r.initialiser();
+		}
+		
 	}
 
 }

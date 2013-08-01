@@ -26,4 +26,7 @@ public abstract class AbstractRoom implements Room {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public void initialiser() {
+	}
 }

@@ -15,7 +15,7 @@ public class Surplomb extends AbstractRoom {
 	@Override
 	public String look() {
 		if (utiliserLampe)
-			return "Vous vous retrouvez dans une grotte.\n";
+			return "Vous vous retrouvez dans une grotte.";
 		else
 			return "Il fait noir";
 	}
@@ -32,7 +32,7 @@ public class Surplomb extends AbstractRoom {
 		} else if (s.matches("UTILISER.* CLIFF") && pritRoche && !utiliserRoche) {
 			utiliserRoche = true;
 			LevelManager.getInstance().notifyCurrentLevel("outOfSurplomb");
-			return "Vous lancer la roche dans le mur de planche.\n"
+			return "Vous lancez la roche dans le mur de planches.\n"
 					+ "Roche : Aaaaaaaaaoutch!\n"
 					+ "Etrange... vous reprenez Cliff.";
 		} else if (s.matches("OUI") && veutTomber) {
@@ -45,7 +45,7 @@ public class Surplomb extends AbstractRoom {
 
 	public Room south() throws RoomNotAccessibleException {
 		if (utiliserLampe)
-			throw new RoomNotAccessibleException("Vous voyez un mur de roche");
+			throw new RoomNotAccessibleException("Vous voyez un mur de roches");
 		else
 			throw new RoomNotAccessibleException("Il fait noir");
 	}
@@ -53,7 +53,7 @@ public class Surplomb extends AbstractRoom {
 	public Room east() throws RoomNotAccessibleException {
 		if (utiliserLampe)
 			throw new RoomNotAccessibleException(
-					"Il y a un tas de roche avec une qui a une inscription.\n"
+					"Vous apercez un tas de roches dont l'une de celles-ci possède une inscription.\n"
 							+ "L'inscription mentionne Cliff.");
 		else
 			throw new RoomNotAccessibleException("Il fait noir");
@@ -63,7 +63,7 @@ public class Surplomb extends AbstractRoom {
 		if (utiliserLampe){
 			veutTomber = true;
 			throw new RoomNotAccessibleException(
-					"Vous voyez le puis d'ou vous venez, voulez-vous vraiment y retourner ?");
+					"Vous voyez le puit d'où vous venez, voulez-vous vraiment y retourner ?");
 		}
 		else
 			throw new RoomNotAccessibleException("Il fait noir");
@@ -78,5 +78,13 @@ public class Surplomb extends AbstractRoom {
 					.getRoom("Enigme");
 		else
 			throw new RoomNotAccessibleException("Il fait noir");
+	}
+
+	@Override
+	public void initialiser() {
+		utiliserLampe = false;
+		pritRoche = false;
+		utiliserRoche = false;
+		veutTomber = false;		
 	}
 }

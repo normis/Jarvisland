@@ -12,8 +12,9 @@ public class Puit extends AbstractRoom {
 
 	@Override
 	public String look() {
-		return "Tu tombe dans se qui semble etre un puit en pierre. \n"
-				+ "Le sol approche a grande vitesse.";
+		return "Vous êtes en chute libre. Autour de vous se trouve un mur \n" +
+				"de pierre circulaire. Le sol approche a grande vitesse, \n" +
+				"il faut agir rapidement.";
 	}
 
 	@Override
@@ -22,10 +23,10 @@ public class Puit extends AbstractRoom {
 			utiliserGrappin = true;
 			InventoryManager.getInstance().removeItem("Grappin");
 			LevelManager.getInstance().notifyCurrentLevel("outOfPuit");
-			return "Vous avez eviter la mort! \n"
-					+ "Vous etes acrocher au mur.\n"
-					+ "Vous remonter a l'aide du grappin jusqu'a un surplomb. \n\n"
-					+ LevelManager.getInstance().getCurrentLevel().changeRoom("Surplomb");
+			String look = LevelManager.getInstance().getCurrentLevel().changeRoom("Surplomb");
+			
+			return "Vous venez d'eviter la mort! Vous vous acrochez au \n" +
+					"mur et vous remontez à l'aide du grappin jusqu'à un surplomb.\n" + look;
 		}
 		return null;
 	}
@@ -37,16 +38,21 @@ public class Puit extends AbstractRoom {
 
 	public Room east() throws RoomNotAccessibleException {
 		throw new RoomNotAccessibleException(
-				"Les murs defilent a trop grande vitesse pour s'agripper.");
+				"Les murs sont trop glissants. Vous ne pouvez pas vous agripper.");
 	}
 
 	public Room west() throws RoomNotAccessibleException {
 		throw new RoomNotAccessibleException(
-				"Les murs defilent a trop grande vitesse pour s'agripper.");
+				"Les murs sont trop glissants. Vous ne pouvez pas vous agripper.");
 	}
 
 	public Room north() throws RoomNotAccessibleException {
 			throw new RoomNotAccessibleException(
-					"Les murs defilent a trop grande vitesse pour s'agripper.");
+					"Les murs sont trop glissants. Vous ne pouvez pas vous agripper.");
+	}
+
+	@Override
+	public void initialiser() {
+		utiliserGrappin = false;		
 	}
 }

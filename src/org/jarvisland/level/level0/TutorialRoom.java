@@ -74,4 +74,10 @@ public class TutorialRoom extends AbstractRoom {
 	public Room west() throws RoomNotAccessibleException {
 		throw new RoomNotAccessibleException("Vous voyez un mur de pierre.");
 	}
+
+	@Override
+	public void initialiser() {
+		coffreOuvert = false;
+		isPorteOuverte = false;
+	}
 }
