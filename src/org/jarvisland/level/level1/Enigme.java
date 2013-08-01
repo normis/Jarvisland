@@ -12,8 +12,8 @@ public class Enigme extends AbstractRoom {
 	@Override
 	public String look() {
 
-		return "Vous etes dans une chambre qui semble assez veille. \n "
-				+ "Il y a une porte est verriouiller et il y a une roulette a chiffre au dessu de la poigne, \n "
+		return "Vous êtes dans une chambre qui semble assez vieille. \n "
+				+ "Il y a une porte est verrouillée et il y a une roulette à chiffre au dessus de la poigne, \n "
 				+ " il y a une instruction sur la porte. \n"
 				+ "\"0 0 1 0 1 0 1 0 \" ";
 	}
@@ -22,7 +22,7 @@ public class Enigme extends AbstractRoom {
 	public String execute(String s) {
 		if (s.matches("42")) {
 			reusit = true;
-			return "Vous entendez un son sourd provenant de la porte et elle s'ouvre. Vous entendez une voit murmurer: \" So long, and thanks for all the fish.\"";
+			return "Vous entendez un son sourd provenant de la porte et elle s'ouvre. Vous entendez une voix murmurée: \" So long, and thanks for all the fish.\"";
 		}
 		return null;
 	}
@@ -45,8 +45,8 @@ public class Enigme extends AbstractRoom {
 	@Override
 	public Room east() throws RoomNotAccessibleException {
 		throw new RoomNotAccessibleException(
-				"Il y a une peinture d'une petite machine blanche a l'allure cylindirque qui tien sur deux roue, /n "
-						+ "qui est accompagner d'un etre humanoide doree.");
+				"Il y a une peinture d'une petite machine blanche à l'allure cylindrique qui tient sur deux roues, /n "
+						+ "qui est accompagnée d'un être humanoïde doré.");
 	}
 
 	@Override

@@ -53,7 +53,7 @@ public class Surplomb extends AbstractRoom {
 	public Room east() throws RoomNotAccessibleException {
 		if (utiliserLampe)
 			throw new RoomNotAccessibleException(
-					"Vous apercez un tas de roches dont l'une de celles-ci possède une inscription.\n"
+					"Vous apercevez un tas de roches dont l'une de celles-ci possède une inscription.\n"
 							+ "L'inscription mentionne Cliff.");
 		else
 			throw new RoomNotAccessibleException("Il fait noir");

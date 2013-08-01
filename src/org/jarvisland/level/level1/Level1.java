@@ -12,8 +12,8 @@ public class Level1 extends AbstractLevel {
 	boolean outOfEnigme = false;
 	boolean outOfWine = false; // that's sad
 
-	private final String messageFinLevel = "Vous grimper une echelle et vous atteigner enfin l'exterieur! La roche engraver par les runes \" cliff \" se met a parler \n "
-			+ "-Cliff: Vous devez allez sauve la princesse Jarvis!";
+	private final String messageFinLevel = "Vous grimpez une échelle et vous atteignez enfin l'extérieur! La roche engravée par les ruines \" cliff \" se met à parler \n "
+			+ "-Cliff: Vous devez aller sauver la princesse Jarvis!";
 
 	public Level1() {
 		map.put("Puit", new Puit());
@@ -29,8 +29,8 @@ public class Level1 extends AbstractLevel {
 			if (s.matches("(UTILISER|BOIRE).* BOUTEILLE DE VIN") && !outOfWine) {
 				InventoryManager.getInstance().removeItem("Bouteille de vin");
 				outOfWine = true;
-				return "Vous ne vous senter pas bien et vous vous assoyer quelque seconde, vous retoruner la bouteille et \n "
-						+ "apercever une tete de mort imprimer sur la bouteile.";
+				return "Vous ne vous sentez pas bien et vous vous assoyez quelques secondes, vous retournez la bouteille et \n "
+						+ "apercevez une tête de mort imprimée sur la bouteille.";
 			}
 		}
 		return retour;
@@ -54,11 +54,11 @@ public class Level1 extends AbstractLevel {
 			throw new LevelEndedException();
 		}
 		else if (event.equals("estMort")){
-			System.out.println("Vous tomber dans le puit, Vous frapper violament le sol apres 10 seconde,\n"
-					+ "le sol est couvers de pieux qui vous empale,\n"
-					+ "Des bruleurs s'active,\n "
-					+ "et les murs commence a bouger pour ecraser se qui reste. \n"
-					+ "Bref, vous etes mort applatit, transperé par plusieurs broches, incinéré et ecrabouillé");
+			System.out.println("Vous tombez dans le puit, Vous frappez violemment le sol après 10 secondes,\n"
+					+ "le sol est couvert de pieux qui vous empalent,\n"
+					+ "Des brûleurs s'activent,\n "
+					+ "et les murs commencent à bouger pour écraser ce qui vous reste. \n"
+					+ "Bref, vous êtes mort aplatit, transpercé par plusieurs broches, incinéré et écrabouillé");
 			throw new DeathException();
 		}
 	}
