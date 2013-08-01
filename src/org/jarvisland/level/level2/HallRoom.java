@@ -4,6 +4,8 @@ import org.jarvisland.LevelManager;
 import org.jarvisland.levels.room.AbstractRoom;
 import org.jarvisland.levels.room.Room;
 import org.jarvisland.levels.room.RoomNotAccessibleException;
+import org.jarvisland.userBase.AtomMonster;
+import org.jarvisland.userBase.AtomMonsterFactory;
 import org.jarvisland.userBase.Monster;
 
 public class HallRoom extends AbstractRoom implements Room {
@@ -13,7 +15,11 @@ public class HallRoom extends AbstractRoom implements Room {
 	@Override
 	public String look() {
 		// TODO Auto-generated method stub
-		return "Vous êtes dans le hall";
+		if (!atom.isDead()) {
+			//atom.
+			return "Un atom vous barre la route. Il faut le tuer.";
+		} else 
+			return "Vous êtes dans le hall.";
 	}
 
 	@Override
@@ -36,6 +42,10 @@ public class HallRoom extends AbstractRoom implements Room {
 
 	public Room west() throws RoomNotAccessibleException {
 		return LevelManager.getInstance().getCurrentLevel().getRoom("chateau");
+	}
+	
+	public void initialiser() {
+		atom = (new AtomMonsterFactory()).getMonstre();
 	}
 
 }

@@ -44,6 +44,7 @@ public class LevelManager {
 		}
 		
 		currentLevel = levels.removeFirst();
+		
 		System.out.println("== " + currentLevel.getName() + " ==");
 		System.out.println();
 		

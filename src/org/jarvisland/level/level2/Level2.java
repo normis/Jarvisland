@@ -12,8 +12,6 @@ import org.jarvisland.levels.room.Room;
  *
  */
 public class Level2 extends AbstractLevel {
-
-	boolean isOutOfFirstRoom = false;
 	
 	
 	public Level2() {
@@ -31,15 +29,11 @@ public class Level2 extends AbstractLevel {
 	
 	@Override
 	public boolean isCompleted() {
-		return isOutOfFirstRoom;
+		return false;
 	}
 
 	@Override
 	public void notify(String event) {
-		if (event.equals("outOfFirstRoomEvent")) {
-			isOutOfFirstRoom = true;
-			throw new LevelEndedException();
-		}
 	}
 
 	@Override
@@ -49,12 +43,11 @@ public class Level2 extends AbstractLevel {
 
 	@Override
 	public Room getInitialRoom() {
-		return map.get("forest");
+		return map.get("foret");
 	}
 
 	@Override
 	public void initialiserLevel() {
 		super.initialiserLevel();
-		isOutOfFirstRoom = false;
 	}
 }
