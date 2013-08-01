@@ -1,16 +1,26 @@
 package org.jarvisland.level.level2;
 
+import org.jarvisland.CombatManager;
 import org.jarvisland.LevelManager;
+import org.jarvisland.levels.room.AbstractMonsterRoom;
 import org.jarvisland.levels.room.AbstractRoom;
 import org.jarvisland.levels.room.Room;
 import org.jarvisland.levels.room.RoomNotAccessibleException;
+import org.jarvisland.userBase.AtomMonster;
+import org.jarvisland.userBase.AtomMonsterFactory;
+import org.jarvisland.userBase.Monster;
+import org.jarvisland.userBase.MonsterFactory;
 
-public class HallRoom extends AbstractRoom implements Room {
+public class HallRoom extends AbstractMonsterRoom implements Room {
 
 	@Override
 	public String look() {
-		// TODO Auto-generated method stub
-		return "Vous êtes dans le hall";
+		if (!monster.isDead()) {
+			CombatManager cm = new CombatManager(monster);
+			cm.DemarrerCombat();
+		}
+			
+		return "Vous êtes dans le hall.";
 	}
 
 	@Override
@@ -33,6 +43,11 @@ public class HallRoom extends AbstractRoom implements Room {
 
 	public Room west() throws RoomNotAccessibleException {
 		return LevelManager.getInstance().getCurrentLevel().getRoom("chateau");
+	}
+
+	@Override
+	public MonsterFactory getMonsterFactory() {
+		return new AtomMonsterFactory();
 	}
 
 }

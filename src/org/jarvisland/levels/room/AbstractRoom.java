@@ -28,6 +28,5 @@ public abstract class AbstractRoom implements Room {
 	}
 	
 	public void initialiser() {
-		
 	}
 }

@@ -9,7 +9,8 @@ public class ChateauRoom extends AbstractRoom implements Room {
 
 	@Override
 	public String look() {
-		return "Vous à la grande porte du chateau";
+		return "Vous arrivez à la grande porte du chateau. Vous reconnaissez les cris.\n" +
+				"Il s'agit de la princesse Jarvis. Elle semble en grand péril.";
 	}
 
 	@Override

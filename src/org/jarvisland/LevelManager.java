@@ -27,7 +27,7 @@ public class LevelManager {
 	private LevelManager() {
 		levels = new LinkedList<Level>();
 		//levels.add(new Level0());
-		levels.add(new Level1());
+		//levels.add(new Level1());
 		levels.add(new Level2());
 	}
 	
@@ -44,6 +44,7 @@ public class LevelManager {
 		}
 		
 		currentLevel = levels.removeFirst();
+		
 		System.out.println("== " + currentLevel.getName() + " ==");
 		System.out.println();
 		

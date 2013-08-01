@@ -1,7 +1,5 @@
 package org.jarvisland.userBase;
 
-import java.util.ArrayList;
-
 import org.jarvisland.attaque.Attaque;
 
 public abstract class Monster implements LifeForm{
