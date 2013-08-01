@@ -40,11 +40,24 @@ public class InventoryManager {
 		inventory.remove(item);
 	}
 	
+	public void removeAllItem() {
+		//inventory.clear();
+		inventory = new ArrayList<String>();
+	}
+	
 	public void afficher() {
 		System.out.println("Inventaire :");
 		
 		for(String s : inventory) {
 			System.out.println("- " + s);
 		}
+	}
+	
+	public void reinitialiser() {
+		removeAllItem();
+		addItem("Bouteille de vin");
+		addItem("Lampe de poche");
+		addItem("Grappin");
+		
 	}
 }

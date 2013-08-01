@@ -50,4 +50,9 @@ public class Puit extends AbstractRoom {
 			throw new RoomNotAccessibleException(
 					"Les murs sont trop glissants. Vous ne pouvez pas vous agripper.");
 	}
+
+	@Override
+	public void initialiser() {
+		utiliserGrappin = false;		
+	}
 }

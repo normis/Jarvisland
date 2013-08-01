@@ -46,7 +46,7 @@ public class JarvislandEngine {
 
 		this.bufferedReader = new BufferedReader(new InputStreamReader(is));
 		this.printStream = ps;
-
+		InventoryManager.getInstance().reinitialiser();
 		LevelManager.getInstance().nextLevel();
 		put(LevelManager.getInstance().getCurrentLevel().look());
 	}
@@ -80,7 +80,7 @@ public class JarvislandEngine {
 		} catch (LevelEndedException lle) {
 			checkCompleted();
 		} catch (DeathException death) {
-			checkDeath();	
+			checkDeath();
 		} catch (IOException e) {
 			System.err.println("Invalid Format!");
 		}
@@ -135,9 +135,10 @@ public class JarvislandEngine {
 	 */
 	private boolean checkDeath() {
 		if (PlayerManager.getInstance().getVie() == 0) {
+			LevelManager.getInstance().resetLevel();
 			put(PlayerManager.getInstance().mourir());
-			//LevelManager.getInstance().resetLevel();
-
+			//printStream.println(PlayerManager.getInstance().mourir());
+			//System.exit(0);
 			return true;
 		}
 		return false;
