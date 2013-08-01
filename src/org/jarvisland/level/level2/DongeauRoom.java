@@ -1,11 +1,15 @@
 package org.jarvisland.level.level2;
 
 import org.jarvisland.LevelManager;
+import org.jarvisland.levels.room.AbstractMonsterRoom;
 import org.jarvisland.levels.room.AbstractRoom;
 import org.jarvisland.levels.room.Room;
 import org.jarvisland.levels.room.RoomNotAccessibleException;
+import org.jarvisland.userBase.AtomMonsterFactory;
+import org.jarvisland.userBase.MonsterFactory;
+import org.jarvisland.userBase.NachosMonsterFactory;
 
-public class DongeauRoom extends AbstractRoom implements Room {
+public class DongeauRoom extends AbstractMonsterRoom implements Room {
 
 	@Override
 	public String look() {
@@ -33,5 +37,9 @@ public class DongeauRoom extends AbstractRoom implements Room {
 	public Room west() throws RoomNotAccessibleException {
 		return LevelManager.getInstance().getCurrentLevel().getRoom("trone");
 	}
-
+	
+	@Override
+	public MonsterFactory getMonsterFactory() {
+		return new NachosMonsterFactory();
+	}
 }
