@@ -118,8 +118,7 @@ public class PlayerManager implements LifeForm{
 		System.out.println("Votre nombre de vie est de "+ pointDeVie + " sur " + vieInitiale);
 		System.out.println("Vos attaques sont: ");
 		
-		for(Attaque atk :attaques)
-			System.out.println(atk.getDescription());
+		listeAttaque();
 	}
 
 	public String mourir() {
@@ -127,9 +126,9 @@ public class PlayerManager implements LifeForm{
 	}
 
 	public void listeAttaque() {
-		for(Attaque atk :attaques)
+		for(Attaque atk : attaques)
 		{
-			System.out.println(atk.getDescription());
+			System.out.println("- " + atk.getDescription());
 		}
 	}
 }
