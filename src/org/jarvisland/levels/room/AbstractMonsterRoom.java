@@ -1,7 +1,7 @@
 package org.jarvisland.levels.room;
 
-import org.jarvisland.userBase.Monster;
-import org.jarvisland.userBase.MonsterFactory;
+import org.jarvisland.lifeform.Monster;
+import org.jarvisland.lifeform.MonsterFactory;
 
 public abstract class AbstractMonsterRoom extends AbstractRoom {
 

@@ -11,7 +11,7 @@ public class AttaquePied extends TypeAttaque {
 
 	@Override
 	public String getDescription() {
-		return "Kick";
+		return "Coup de pied";
 	}
 
 }

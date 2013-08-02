@@ -4,10 +4,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
+
+import org.jarvisland.lifeform.Monster;
+import org.jarvisland.lifeform.UserLifeException;
 import org.jarvisland.player.DeathException;
 import org.jarvisland.player.PlayerManager;
-import org.jarvisland.userBase.Monster;
-import org.jarvisland.userBase.UserLifeException;
 
 public class CombatManager {
 	private BufferedReader bufferedReader;
@@ -22,9 +23,9 @@ public class CombatManager {
 		this.printStream = System.out;
 	}
 
-	public void DemarrerCombat() throws DeathException {
+	public void demarrerCombat() throws DeathException {
 		System.out.println("Vous êtes maintenent dans un combat contre " + monster.getName());
-		player.AfficherStats();
+		player.afficherStats();
 		while (true) {
 			prompt();
 			if (player.isDead())
@@ -35,7 +36,7 @@ public class CombatManager {
 		System.out.println("Combat réussi, vous gagné " + getRandomExp() + " points d'experiences.");
 	}
 
-	private void LancerAttaque(String s) {
+	private void lancerAttaque(String s) {
 		try {
 			String result = player.attaque(monster, s);
 			if (result != null) {
@@ -52,17 +53,11 @@ public class CombatManager {
 
 	private void execute(String commande) {
 		commande = commande.toUpperCase();
-
-		if (commande.matches("ATTAQUE .*")) {
-			commande = commande.substring(8);
-			System.out.println(commande);
-			LancerAttaque(commande);
-		}
-		else if (commande.matches("LISTE ATTAQUE"))
+		
+		if (commande.matches("AIDE"))
 			player.listeAttaque();
-		else {
-			put("La commande n'est pas valide");
-		}
+		else
+			lancerAttaque(commande);
 	}
 
 	private void put(String s) {

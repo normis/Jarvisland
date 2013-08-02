@@ -16,31 +16,24 @@ import org.jarvisland.attaque.player.AttaqueFail;
 import org.jarvisland.attaque.player.AttaquePied;
 import org.jarvisland.attaque.player.AttaquePoing;
 import org.jarvisland.attaque.player.AttaqueSpecial;
-import org.jarvisland.userBase.LifeForm;
-import org.jarvisland.userBase.UserLifeException;
+import org.jarvisland.lifeform.LifeForm;
+import org.jarvisland.lifeform.UserLifeException;
 
 public class PlayerManager implements LifeForm{
-	private final int changeVie;
-	private int vieInitial;
-	private int vie;
-	private int level;
-	private boolean dead;
-	private String name;
-	private ArrayList<Attaque> listAttaque;
+	private final int vieInitiale = 50;
+	private int pointDeVie = 50;
+	private boolean estMort = false;
+	private ArrayList<Attaque> attaques;
 	private static PlayerManager instance = new PlayerManager();
 
 	
 	private PlayerManager() {
-		changeVie = 10;
-		vieInitial = 50;
-		level = 0;
-		dead = false;
-		vie = vieInitial;
-		listAttaque = new ArrayList<Attaque>();
-		listAttaque.add(new AttaquePied());
-		listAttaque.add(new AttaquePoing());
-		listAttaque.add(new AttaqueFail());
-		listAttaque.add(new AttaqueSpecial());
+		pointDeVie = vieInitiale;
+		attaques = new ArrayList<Attaque>();
+		attaques.add(new AttaquePied());
+		attaques.add(new AttaquePoing());
+		attaques.add(new AttaqueFail());
+		attaques.add(new AttaqueSpecial());
 	}
 
 	public static PlayerManager getInstance() {
@@ -49,60 +42,56 @@ public class PlayerManager implements LifeForm{
 
 	@Override
 	public int getVie() {
-		return vie;
+		return pointDeVie;
 	}
 
 	@Override
 	public String getName() {
-		return name;
+		return "";
 	}
 
 	@Override
 	public boolean isDead() {
-		return dead;
+		return estMort;
 	}
 
 	@Override
 	public void resetLife() {
-		vie = vieInitial;
+		pointDeVie = vieInitiale;
 	}
 	
 	@Override
 	public void dropLife(int dommage) throws DeathException{
-		vie -= dommage;
-		if(vie <= 0)
+		pointDeVie -= dommage;
+		if(pointDeVie <= 0)
 		{
-			vie = 0;
-			dead = false;
+			pointDeVie = 0;
+			estMort = false;
 			throw new DeathException();
 		}
 	}
 
 	public void addAttaque(Attaque atk) {
-		listAttaque.add(atk);
+		attaques.add(atk);
 	}
 
 	public void removeAttaque(Attaque atk) {
-		listAttaque.remove(atk);
+		attaques.remove(atk);
 	}
 
 	@Override
 	public void raiseLife(int gainLife) {
-		vie += gainLife;
-		if(vie >= vieInitial){
-			vie = vieInitial;
+		pointDeVie += gainLife;
+		if(pointDeVie >= vieInitiale){
+			pointDeVie = vieInitiale;
 		}
 		
-	}
-
-	public void changedLevel(int newLevel) {
-		level = newLevel;
 	}
 
 	public String attaque(LifeForm user, String nameAttaque) throws UserLifeException {
 		int dommage = 0;
 		String attaque = null;
-		for(Attaque atk : listAttaque)
+		for(Attaque atk : attaques)
 		{
 			if (atk.getDescription().toUpperCase().contains(nameAttaque))
 			{
@@ -120,26 +109,25 @@ public class PlayerManager implements LifeForm{
 	}
 
 	public void setBaseLife(int life) {
-		vieInitial = life;
-		vie = life;
+		//vieInitiale = life;
+		pointDeVie = life;
 	}
 	
-	public void AfficherStats()
+	public void afficherStats()
 	{
-		System.out.println("Votre nombre de vie est de "+ vie + " sur " + vieInitial);
+		System.out.println("Votre nombre de vie est de "+ pointDeVie + " sur " + vieInitiale);
 		System.out.println("Vos attaques sont: ");
-		for(Attaque atk :listAttaque)
-		{
+		
+		for(Attaque atk :attaques)
 			System.out.println(atk.getDescription());
-		}
 	}
 
 	public String mourir() {
-		return "Game over";
+		return "** Game over **";
 	}
 
 	public void listeAttaque() {
-		for(Attaque atk :listAttaque)
+		for(Attaque atk :attaques)
 		{
 			System.out.println(atk.getDescription());
 		}

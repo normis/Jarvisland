@@ -5,8 +5,8 @@ import org.jarvisland.LevelManager;
 import org.jarvisland.levels.room.AbstractMonsterRoom;
 import org.jarvisland.levels.room.Room;
 import org.jarvisland.levels.room.RoomNotAccessibleException;
-import org.jarvisland.userBase.MonsterFactory;
-import org.jarvisland.userBase.NachosMonsterFactory;
+import org.jarvisland.lifeform.MonsterFactory;
+import org.jarvisland.lifeform.NachosMonsterFactory;
 
 public class DongeonRoom extends AbstractMonsterRoom implements Room {
 
@@ -14,7 +14,7 @@ public class DongeonRoom extends AbstractMonsterRoom implements Room {
 	public String look() {
 		if (!monster.isDead()) {
 			CombatManager cm = new CombatManager(monster);
-			cm.DemarrerCombat();
+			cm.demarrerCombat();
 		}
 		return "Vous êtes dans le dongeon";
 	}

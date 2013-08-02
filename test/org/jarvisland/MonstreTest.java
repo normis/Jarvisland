@@ -4,9 +4,9 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import org.jarvisland.attaque.Attaque;
-import org.jarvisland.userBase.AtomMonsterFactory;
-import org.jarvisland.userBase.Monster;
-import org.jarvisland.userBase.MonsterFactory;
+import org.jarvisland.lifeform.AtomMonsterFactory;
+import org.jarvisland.lifeform.Monster;
+import org.jarvisland.lifeform.MonsterFactory;
 import org.junit.Test;
 
 public class MonstreTest {

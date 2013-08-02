@@ -11,7 +11,7 @@ public class AttaqueSpecial extends TypeAttaque {
 
 	@Override
 	public String getDescription() {
-		return "IT'S OVER 9000!!!";
+		return "Super pouvoir";
 	}
 
 }

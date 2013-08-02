@@ -157,7 +157,7 @@ public class JarvislandEngine {
 	 * 
 	 */
 	private void afficherStats() {
-		PlayerManager.getInstance().AfficherStats();
+		PlayerManager.getInstance().afficherStats();
 		prompt();
 	}
 

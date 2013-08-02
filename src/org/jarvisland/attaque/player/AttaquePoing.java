@@ -11,7 +11,7 @@ public class AttaquePoing extends TypeAttaque {
 
 	@Override
 	public String getDescription() {
-		return "Punch";
+		return "Coup de poing";
 	}
 
 }

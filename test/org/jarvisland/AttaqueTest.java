@@ -6,11 +6,11 @@ import static org.junit.Assert.fail;
 
 import org.jarvisland.attaque.Attaque;
 import org.jarvisland.attaque.nachos.AttaqueNachosType1;
+import org.jarvisland.lifeform.LifeForm;
+import org.jarvisland.lifeform.MonsterFactory;
+import org.jarvisland.lifeform.NachosMonsterFactory;
+import org.jarvisland.lifeform.UserLifeException;
 import org.jarvisland.player.PlayerManager;
-import org.jarvisland.userBase.LifeForm;
-import org.jarvisland.userBase.MonsterFactory;
-import org.jarvisland.userBase.NachosMonsterFactory;
-import org.jarvisland.userBase.UserLifeException;
 import org.junit.Test;
 
 public class AttaqueTest {

@@ -11,7 +11,7 @@ public class AttaqueFail extends TypeAttaque {
 
 	@Override
 	public String getDescription() {
-		return "ERROR 404";
+		return "Erreur 404";
 	}
 
 }
