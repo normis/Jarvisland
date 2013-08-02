@@ -3,10 +3,8 @@ package org.jarvisland.level.level2;
 import org.jarvisland.CombatManager;
 import org.jarvisland.LevelManager;
 import org.jarvisland.levels.room.AbstractMonsterRoom;
-import org.jarvisland.levels.room.AbstractRoom;
 import org.jarvisland.levels.room.Room;
 import org.jarvisland.levels.room.RoomNotAccessibleException;
-import org.jarvisland.userBase.AtomMonsterFactory;
 import org.jarvisland.userBase.MonsterFactory;
 import org.jarvisland.userBase.NachosMonsterFactory;
 

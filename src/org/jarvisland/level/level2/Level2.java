@@ -1,7 +1,6 @@
 package org.jarvisland.level.level2;
 
 import org.jarvisland.level.AbstractLevel;
-import org.jarvisland.level.LevelEndedException;
 import org.jarvisland.levels.room.Room;
 
 /**

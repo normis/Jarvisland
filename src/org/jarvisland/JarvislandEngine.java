@@ -29,7 +29,7 @@ public class JarvislandEngine {
 
 	private BufferedReader bufferedReader;
 	private PrintStream printStream;
-	private int nbTours = 0;
+	//private int nbTours = 0;
 
 	/**
 	 * Le constructeur prend en paramètre une pièce de départ et la charge.
@@ -73,7 +73,7 @@ public class JarvislandEngine {
 	 * @throws RoomNotAccessibleException
 	 */
 	private void prompt() {
-		++nbTours;
+		//++nbTours;
 		try {
 			printStream.print(">");
 			execute(bufferedReader.readLine());
