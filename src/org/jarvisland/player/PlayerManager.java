@@ -107,11 +107,6 @@ public class PlayerManager implements LifeForm{
 		}
 		return attaque;
 	}
-
-	public void setBaseLife(int life) {
-		//vieInitiale = life;
-		pointDeVie = life;
-	}
 	
 	public void afficherStats()
 	{
@@ -130,5 +125,9 @@ public class PlayerManager implements LifeForm{
 		{
 			System.out.println("- " + atk.getDescription());
 		}
+	}
+
+	public void setBaseLife(int i) {
+		pointDeVie = i;
 	}
 }

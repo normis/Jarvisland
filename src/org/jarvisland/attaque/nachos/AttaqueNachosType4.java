@@ -6,7 +6,7 @@ public class AttaqueNachosType4 extends TypeAttaque {
 
 	@Override
 	public int getDommage() {
-		return 40;
+		return 25;
 	}
 
 	@Override

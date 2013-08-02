@@ -137,6 +137,7 @@ public class JarvislandEngine {
 		if (PlayerManager.getInstance().getVie() == 0) {
 			System.out.println(PlayerManager.getInstance().mourir());
 			LevelManager.getInstance().resetLevel();
+			PlayerManager.getInstance().resetLife();
 			put(LevelManager.getInstance().getCurrentLevel().look());
 			return true;
 		}
