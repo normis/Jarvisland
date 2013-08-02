@@ -38,17 +38,17 @@ public class Puit extends AbstractRoom {
 
 	public Room east() throws RoomNotAccessibleException {
 		throw new RoomNotAccessibleException(
-				"Les murs sont trop glissants. Vous ne pouvez pas vous agripper.");
+				"Les murs défilent à trop grande vitesse pour s'agripper.");
 	}
 
 	public Room west() throws RoomNotAccessibleException {
 		throw new RoomNotAccessibleException(
-				"Les murs sont trop glissants. Vous ne pouvez pas vous agripper.");
+				"Les murs défilent à trop grande vitesse pour s'agripper.");
 	}
 
 	public Room north() throws RoomNotAccessibleException {
 			throw new RoomNotAccessibleException(
-				"Les murs sont trop glissants. Vous ne pouvez pas vous agripper.");
+					"Les murs défilent à trop grande vitesse pour s'agripper.");
 	}
 
 	@Override

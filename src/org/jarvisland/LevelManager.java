@@ -3,6 +3,8 @@ package org.jarvisland;
 import java.util.LinkedList;
 
 import org.jarvisland.level.Level;
+import org.jarvisland.level.level0.Level0;
+import org.jarvisland.level.level1.Level1;
 import org.jarvisland.level.level2.Level2;
 
 /**

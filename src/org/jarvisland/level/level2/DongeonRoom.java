@@ -2,6 +2,7 @@ package org.jarvisland.level.level2;
 
 import org.jarvisland.CombatManager;
 import org.jarvisland.LevelManager;
+import org.jarvisland.level.LevelEndedException;
 import org.jarvisland.levels.room.AbstractMonsterRoom;
 import org.jarvisland.levels.room.Room;
 import org.jarvisland.levels.room.RoomNotAccessibleException;
@@ -16,7 +17,12 @@ public class DongeonRoom extends AbstractMonsterRoom implements Room {
 			CombatManager cm = new CombatManager(monster);
 			cm.demarrerCombat();
 		}
-		return "Vous êtes dans le dongeon";
+		
+		System.out.println();
+		System.out.println("Vous avez sauvé la princesse Jarvis.");
+		System.out.println("Fin!");
+		
+		throw new LevelEndedException();
 	}
 
 	@Override
