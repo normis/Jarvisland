@@ -6,7 +6,7 @@ public class HelloWorld {
 				"Bonjour à vous.",
 				"Salutation.",
 				"Quel belle température avons-nous ces temps-ci!",
-				"Aurevoir"
+				"Au revoir!"
 		};
 		int n = (int)(Math.random()*greet.length);
 		return greet[n];

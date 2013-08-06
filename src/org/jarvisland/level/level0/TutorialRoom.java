@@ -30,7 +30,7 @@ public class TutorialRoom extends AbstractRoom {
 		} else if (s.matches("PRENDRE.* CL.*")) {
 			if (coffreOuvert && !InventoryManager.getInstance().hasItem("Clé")) {
 				InventoryManager.getInstance().addItem("Clé");
-				return "Vous ramassez une clé.";
+				return "Vous ramassez la clé.";
 			}
 		} else if (s.matches("UTILISER.* CL.* PORTE")) {
 			if (InventoryManager.getInstance().hasItem("Clé")) {

@@ -18,7 +18,7 @@ public class Level2 extends AbstractLevel {
 		map.put("chateau", new ChateauRoom());
 		map.put("cour", new CourRoom());
 		map.put("chambre", new ChambreRoom());
-		map.put("cuisine", new CusineRoom());
+		map.put("cuisine", new CuisineRoom());
 		map.put("tour", new TourRoom());
 		map.put("hall", new HallRoom());
 		map.put("trone", new TroneRoom());

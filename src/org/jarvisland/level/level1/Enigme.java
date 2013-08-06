@@ -13,7 +13,7 @@ public class Enigme extends AbstractRoom {
 	public String look() {
 
 		return "Vous êtes dans une chambre qui semble assez vieille. \n "
-				+ "Il y a une porte est verrouillée et il y a une roulette à chiffre au dessus de la poigne, \n "
+				+ "Il y a une porte qui est verrouillée et il y a une roulette à chiffre au dessus de la poignée, \n "
 				+ " il y a une instruction sur la porte. \n"
 				+ "\"0 0 1 0 1 0 1 0 \" ";
 	}

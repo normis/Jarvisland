@@ -5,7 +5,7 @@ import org.jarvisland.levels.room.AbstractRoom;
 import org.jarvisland.levels.room.Room;
 import org.jarvisland.levels.room.RoomNotAccessibleException;
 
-public class CusineRoom extends AbstractRoom implements Room {
+public class CuisineRoom extends AbstractRoom implements Room {
 
 	@Override
 	public String look() {
