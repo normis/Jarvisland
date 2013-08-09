@@ -1,7 +1,9 @@
 package org.jarvisland.level.level2;
 
 import org.jarvisland.level.AbstractLevel;
+import org.jarvisland.level.LevelEndedException;
 import org.jarvisland.levels.room.Room;
+import org.jarvisland.player.DeathException;
 
 /**
  * Le level 0 est un petit niveau tutoriel qui ne possède
@@ -33,6 +35,8 @@ public class Level2 extends AbstractLevel {
 
 	@Override
 	public void notify(String event) {
+		if (event.equals("diminuerNbrPas"))
+			CountDown.getInstance().decreasePas();
 	}
 
 	@Override

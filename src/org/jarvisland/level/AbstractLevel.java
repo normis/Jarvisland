@@ -3,6 +3,7 @@ package org.jarvisland.level;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.jarvisland.LevelManager;
 import org.jarvisland.levels.room.Room;
 import org.jarvisland.levels.room.RoomNotAccessibleException;
 
@@ -71,8 +72,6 @@ public abstract class AbstractLevel implements Level {
 	public Room getRoom(String room) {
 		return map.get(room);
 	}
-	
-
 
 	@Override
 	public void initialiserLevel() {

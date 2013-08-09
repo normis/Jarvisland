@@ -123,7 +123,7 @@ public class PlayerManager implements LifeForm{
 	public void listeAttaque() {
 		for(Attaque atk : attaques)
 		{
-			System.out.println("- " + atk.getDescription());
+			System.out.println("- " + atk.getDescription() + " - " + atk.getDommage() + " de dommage");
 		}
 	}
 

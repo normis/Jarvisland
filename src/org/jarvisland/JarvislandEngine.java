@@ -29,7 +29,8 @@ public class JarvislandEngine {
 
 	private BufferedReader bufferedReader;
 	private PrintStream printStream;
-	//private int nbTours = 0;
+
+	// private int nbTours = 0;
 
 	/**
 	 * Le constructeur prend en paramètre une pièce de départ et la charge.
@@ -73,7 +74,7 @@ public class JarvislandEngine {
 	 * @throws RoomNotAccessibleException
 	 */
 	private void prompt() {
-		//++nbTours;
+		// ++nbTours;
 		try {
 			printStream.print(">");
 			execute(bufferedReader.readLine());
@@ -103,6 +104,8 @@ public class JarvislandEngine {
 			put(HelloWorld.SayHi());
 		} else if (commande.matches("STATS")) {
 			afficherStats();
+		//} else if (commande.matches("* CLIFF *")) {
+
 		} else {
 			String test = LevelManager.getInstance().getCurrentLevel()
 					.execute(commande);
@@ -160,6 +163,10 @@ public class JarvislandEngine {
 	private void afficherStats() {
 		PlayerManager.getInstance().afficherStats();
 		prompt();
+	}
+
+	private void indiceCliff() {
+
 	}
 
 	/**

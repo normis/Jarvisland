@@ -33,7 +33,7 @@ public class CombatManager {
 			if (monster.isDead())
 				break;
 		}
-		System.out.println("Combat réussi, vous gagné " + getRandomExp() + " points d'experiences.");
+		System.out.println("Combat réussi, vous gagné " + getRandomExp() + " points d'experiences.\n");
 	}
 
 	private void lancerAttaque(String s) {

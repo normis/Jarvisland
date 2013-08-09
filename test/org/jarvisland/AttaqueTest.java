@@ -18,7 +18,7 @@ public class AttaqueTest {
 	@Test
 	public void testAttaqueConstructor() {
 		Attaque attaque = new AttaqueNachosType1();
-		assertTrue(attaque.getDommage() == 30);
+		assertTrue(attaque.getDommage() == 15);
 		assertTrue(attaque.getDescription().equals("Segmentation Fault"));
 	}
 	
@@ -30,7 +30,7 @@ public class AttaqueTest {
 		
 		try {
 			attaque.attaque(monsterTest, attaque);
-			assertEquals(120, monsterTest.getVie());
+			assertEquals(135, monsterTest.getVie());
 		} catch (UserLifeException e) {
 			fail();
 		}
@@ -49,8 +49,8 @@ public class AttaqueTest {
 			attaque.attaque(monsterTest, attaque);
 			attaque.attaque(monsterTest, attaque);
 			attaque.attaque(monsterTest, attaque);
-			fail();
 		} catch (UserLifeException e) {
+			fail();
 		}
 	}
 

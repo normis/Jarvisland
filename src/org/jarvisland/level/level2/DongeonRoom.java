@@ -1,8 +1,8 @@
 package org.jarvisland.level.level2;
 
 import org.jarvisland.CombatManager;
+import org.jarvisland.InventoryManager;
 import org.jarvisland.LevelManager;
-import org.jarvisland.level.LevelEndedException;
 import org.jarvisland.levels.room.AbstractMonsterRoom;
 import org.jarvisland.levels.room.Room;
 import org.jarvisland.levels.room.RoomNotAccessibleException;
@@ -18,16 +18,16 @@ public class DongeonRoom extends AbstractMonsterRoom implements Room {
 			cm.demarrerCombat();
 		}
 		
-		System.out.println();
-		System.out.println("Vous avez sauvé la princesse Jarvis.");
-		System.out.println("Fin!");
-		
-		throw new LevelEndedException();
+		return "Nachos s'écroule par terre en disant d'un dernier soupire ....arh arh.. SegFault Bitch!!!!...\n"
+				+ "Vous voyez un objet scintillant apparaître au fond de la pièce qui semble être une clé.";
 	}
 
 	@Override
 	public String execute(String s) {
-		// TODO Auto-generated method stub
+		if (s.matches("PRENDRE.* CLE")) {
+			InventoryManager.getInstance().addItem("cle tour");
+			return "Vous ramasez la clé qui est au fond de la pièce.";
+		}
 		return null;
 	}
 
@@ -46,7 +46,7 @@ public class DongeonRoom extends AbstractMonsterRoom implements Room {
 	public Room west() throws RoomNotAccessibleException {
 		return LevelManager.getInstance().getCurrentLevel().getRoom("trone");
 	}
-	
+
 	@Override
 	public MonsterFactory getMonsterFactory() {
 		return new NachosMonsterFactory();

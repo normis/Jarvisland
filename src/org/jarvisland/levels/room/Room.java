@@ -15,6 +15,7 @@ public interface Room {
 	public Room south() throws RoomNotAccessibleException;
 	public Room east() throws RoomNotAccessibleException;
 	public Room west() throws RoomNotAccessibleException;
+	
 
 	public void initialiser();
 

@@ -18,8 +18,7 @@ public class ChambreRoom extends AbstractRoom implements Room {
 	}
 
 	public Room north() throws RoomNotAccessibleException {
-		throw new RoomNotAccessibleException(
-				"Vous apercevez un mur");
+		throw new RoomNotAccessibleException("Vous apercevez un mur");
 	}
 
 	public Room south() throws RoomNotAccessibleException {
@@ -27,7 +26,7 @@ public class ChambreRoom extends AbstractRoom implements Room {
 	}
 
 	public Room east() throws RoomNotAccessibleException {
-		return LevelManager.getInstance().getCurrentLevel().getRoom("cusine");
+		return LevelManager.getInstance().getCurrentLevel().getRoom("cuisine");
 	}
 
 	public Room west() throws RoomNotAccessibleException {
