@@ -35,8 +35,8 @@ public class Level2 extends AbstractLevel {
 
 	@Override
 	public void notify(String event) {
-		if (event.equals("diminuerNbrPas"))
-			CountDown.getInstance().decreasePas();
+		/*if (event.equals("diminuerNbrPas"))
+			CountDown.getInstance().decreasePas();*/
 	}
 
 	@Override
