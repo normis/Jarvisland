@@ -1,5 +1,8 @@
 package org.jarvisland.level;
 
+import java.io.ByteArrayOutputStream;
+
+import org.jarvisland.ExecutionHandler;
 import org.jarvisland.levels.room.Room;
 import org.jarvisland.levels.room.RoomNotAccessibleException;
 
@@ -17,7 +20,7 @@ import org.jarvisland.levels.room.RoomNotAccessibleException;
  * @author niclupien
  *
  */
-public interface Level {
+public interface Level extends ExecutionHandler {
 	/**
 	 * Définit si le niveau est terminé
 	 * @return isCompleted
@@ -39,7 +42,8 @@ public interface Level {
 	 * @param commande
 	 * @return résultat
 	 */
-	public String execute(String commande);
+	@Override
+	public void execute(String commande, ByteArrayOutputStream baos);
 	
 	/**
 	 * Description de la pièce

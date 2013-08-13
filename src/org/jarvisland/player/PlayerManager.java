@@ -9,8 +9,11 @@ package org.jarvisland.player;
  *
  */
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 
+import org.jarvisland.ExecutionHandler;
 import org.jarvisland.attaque.Attaque;
 import org.jarvisland.attaque.player.AttaqueFail;
 import org.jarvisland.attaque.player.AttaquePied;
@@ -19,7 +22,7 @@ import org.jarvisland.attaque.player.AttaqueSpecial;
 import org.jarvisland.lifeform.LifeForm;
 import org.jarvisland.lifeform.UserLifeException;
 
-public class PlayerManager implements LifeForm{
+public class PlayerManager implements LifeForm, ExecutionHandler{
 	private final int vieInitiale = 50;
 	private int pointDeVie = 50;
 	private boolean estMort = false;
@@ -108,26 +111,35 @@ public class PlayerManager implements LifeForm{
 		return attaque;
 	}
 	
-	public void afficherStats()
+	public void afficherStats(PrintStream ps)
 	{
-		System.out.println("Votre nombre de vie est de "+ pointDeVie + " sur " + vieInitiale);
-		System.out.println("Vos attaques sont: ");
+		ps.println("Votre nombre de vie est de "+ pointDeVie + " sur " + vieInitiale);
+		ps.println("Vos attaques sont: ");
 		
-		listeAttaque();
+		listeAttaque(ps);
 	}
 
 	public String mourir() {
 		return "** Game over **";
 	}
 
-	public void listeAttaque() {
+	public void listeAttaque(PrintStream ps) {
 		for(Attaque atk : attaques)
 		{
-			System.out.println("- " + atk.getDescription() + " - " + atk.getDommage() + " de dommage");
+			ps.println("- " + atk.getDescription() + " - " + atk.getDommage() + " de dommage");
 		}
 	}
 
 	public void setBaseLife(int i) {
 		pointDeVie = i;
+	}
+
+	@Override
+	public void execute(String commande, ByteArrayOutputStream baos) {
+		PrintStream ps = new PrintStream(baos);
+		
+		if (commande.matches("STATS")) {
+			afficherStats(ps);
+		}
 	}
 }

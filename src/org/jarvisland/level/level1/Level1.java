@@ -1,5 +1,8 @@
 package org.jarvisland.level.level1;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 import org.jarvisland.InventoryManager;
 import org.jarvisland.level.AbstractLevel;
 import org.jarvisland.level.LevelEndedException;
@@ -23,17 +26,17 @@ public class Level1 extends AbstractLevel {
 	}
 
 	@Override
-	public String execute(String s) {
-		String retour = super.execute(s);
-		if (retour == null) {
-			if (s.matches("(UTILISER|BOIRE).* BOUTEILLE DE VIN") && !outOfWine) {
-				InventoryManager.getInstance().removeItem("Bouteille de vin");
-				outOfWine = true;
-				return "Vous ne vous sentez pas bien et vous vous assoyez quelques secondes, vous retournez la bouteille et \n "
-						+ "apercevez une tête de mort imprimée sur la bouteille.";
-			}
+	public void execute(String s, ByteArrayOutputStream baos) {
+		super.execute(s, baos);
+		PrintStream ps = new PrintStream(baos);
+		if (s.matches("(UTILISER|BOIRE).* BOUTEILLE DE VIN") && !outOfWine) {
+			InventoryManager.getInstance().removeItem("Bouteille de vin");
+			outOfWine = true;
+			ps.println("Vous ne vous sentez pas bien et vous " +
+					"vous assoyez quelques secondes, vous retournez la " +
+					"bouteille et \n apercevez une tête de mort imprimée " +
+					"sur la bouteille.");
 		}
-		return retour;
 	}
 
 	@Override
@@ -52,13 +55,13 @@ public class Level1 extends AbstractLevel {
 			outOfEnigme = true;
 			System.out.println(messageFinLevel);
 			throw new LevelEndedException();
-		}
-		else if (event.equals("estMort")){
-			System.out.println("Vous tombez dans le puit, Vous frappez violemment le sol après 10 secondes,\n"
-					+ "le sol est couvert de pieux qui vous empalent,\n"
-					+ "Des brûleurs s'activent,\n "
-					+ "et les murs commencent à bouger pour écraser ce qui vous reste. \n"
-					+ "Bref, vous êtes mort aplatit, transpercé par plusieurs broches, incinéré et écrabouillé");
+		} else if (event.equals("estMort")) {
+			System.out
+					.println("Vous tombez dans le puit, Vous frappez violemment le sol après 10 secondes,\n"
+							+ "le sol est couvert de pieux qui vous empalent,\n"
+							+ "Des brûleurs s'activent,\n "
+							+ "et les murs commencent à bouger pour écraser ce qui vous reste. \n"
+							+ "Bref, vous êtes mort aplatit, transpercé par plusieurs broches, incinéré et écrabouillé");
 			throw new DeathException();
 		}
 	}

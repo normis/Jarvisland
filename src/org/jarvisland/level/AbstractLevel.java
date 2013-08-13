@@ -1,9 +1,10 @@
 package org.jarvisland.level;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.jarvisland.LevelManager;
 import org.jarvisland.levels.room.Room;
 import org.jarvisland.levels.room.RoomNotAccessibleException;
 
@@ -41,15 +42,18 @@ public abstract class AbstractLevel implements Level {
 	}
 
 	@Override
-	public String execute(String commande) {
+	public void execute(String commande, ByteArrayOutputStream baos) {
+		PrintStream ps = new PrintStream(baos);
+		
 		commande = commande.toUpperCase();
 
 		if (commande.matches("NORD|SUD|EST|OUEST")) {
-			return navigate(commande);
+			ps.println(navigate(commande));
 		} else if (commande.matches("VOIR")) {
-			return room.look();
+			ps.println(room.look());
 		} else {
-			return room.execute(commande);
+			String result = room.execute(commande);
+			if (result != null) ps.println(result);
 		}
 	}
 

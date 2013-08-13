@@ -1,11 +1,12 @@
 package org.jarvisland;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
-import java.util.Scanner;
+import java.util.ArrayList;
 
 import org.jarvisland.level.LevelEndedException;
 import org.jarvisland.levels.room.RoomNotAccessibleException;
@@ -29,6 +30,7 @@ public class JarvislandEngine {
 
 	private BufferedReader bufferedReader;
 	private PrintStream printStream;
+	private ArrayList<ExecutionHandler> handlers = new ArrayList<ExecutionHandler>();
 
 	// private int nbTours = 0;
 
@@ -47,6 +49,12 @@ public class JarvislandEngine {
 
 		this.bufferedReader = new BufferedReader(new InputStreamReader(is));
 		this.printStream = ps;
+		
+		handlers.add(InventoryManager.getInstance());
+		handlers.add(PlayerManager.getInstance());
+		handlers.add(new AideHandler());
+		handlers.add(new HelloWorldHandler());
+		
 		InventoryManager.getInstance().reinitialiser();
 		LevelManager.getInstance().nextLevel();
 		put(LevelManager.getInstance().getCurrentLevel().look());
@@ -62,7 +70,10 @@ public class JarvislandEngine {
 	 * @throws RoomNotAccessibleException
 	 */
 	private void put(String s) {
-		printStream.println(s);
+		if (s.length() == 0)
+			printStream.println("Commande invalide.");
+		else
+			printStream.println(s);
 		prompt();
 	}
 
@@ -93,26 +104,12 @@ public class JarvislandEngine {
 	 * @param commande
 	 * @throws RoomNotAccessibleException
 	 */
-	private void execute(String commande) {
+	public void execute(String commande) {
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		commande = commande.toUpperCase();
-
-		if (commande.matches("INVENTAIRE")) {
-			afficherInventaire();
-		} else if (commande.matches("AIDE")) {
-			afficherAide();
-		} else if (commande.matches("(ALLO|BONJOUR|SALUT).*")) {
-			put(HelloWorld.SayHi());
-		} else if (commande.matches("STATS")) {
-			afficherStats();
-		//} else if (commande.matches("* CLIFF *")) {
-
-		} else {
-			String test = LevelManager.getInstance().getCurrentLevel()
-					.execute(commande);
-
-			put(test != null ? test : "La commande n'est pas valide");
-		}
-
+		for(ExecutionHandler h : handlers) h.execute(commande, baos);
+		LevelManager.getInstance().getCurrentLevel().execute(commande, baos);
+		put(baos.toString());
 	}
 
 	/**
@@ -145,39 +142,6 @@ public class JarvislandEngine {
 			return true;
 		}
 		return false;
-	}
-
-	/**
-	 * Affiche l'inventaire du joueur
-	 * 
-	 */
-	private void afficherInventaire() {
-		InventoryManager.getInstance().afficher();
-		prompt();
-	}
-
-	/**
-	 * Affiche les statistique du joueur
-	 * 
-	 */
-	private void afficherStats() {
-		PlayerManager.getInstance().afficherStats();
-		prompt();
-	}
-
-	private void indiceCliff() {
-
-	}
-
-	/**
-	 * Affiche les commandes de Jarvisland
-	 * 
-	 * @throws RoomNotAccessibleException
-	 */
-	private void afficherAide() {
-		System.out.println();
-		InputStream file = ClassLoader.getSystemResourceAsStream("aide.txt");
-		put(new Scanner(file).useDelimiter("\\Z").next());
 	}
 
 }

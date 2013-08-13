@@ -1,5 +1,7 @@
 package org.jarvisland;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 
 /**
@@ -15,7 +17,7 @@ import java.util.ArrayList;
  * @author niclupien
  *
  */
-public class InventoryManager {
+public class InventoryManager implements ExecutionHandler {
 	private ArrayList<String> inventory;
 	
 	private static InventoryManager instance = new InventoryManager();
@@ -45,19 +47,24 @@ public class InventoryManager {
 		inventory = new ArrayList<String>();
 	}
 	
-	public void afficher() {
-		System.out.println("Inventaire :");
-		
-		for(String s : inventory) {
-			System.out.println("- " + s);
-		}
-	}
-	
 	public void reinitialiser() {
 		removeAllItem();
 		addItem("Bouteille de vin");
 		addItem("Lampe de poche");
 		addItem("Grappin");
 		
+	}
+
+	@Override
+	public void execute(String commande, ByteArrayOutputStream baos) {
+		PrintStream ps = new PrintStream(baos);
+		
+		if (commande.matches("INVENTAIRE")) {
+			ps.println("Inventaire :");
+			
+			for(String s : inventory) {
+				ps.println("- " + s);
+			}
+		};
 	}
 }

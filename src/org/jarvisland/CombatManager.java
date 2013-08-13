@@ -25,7 +25,7 @@ public class CombatManager {
 
 	public void demarrerCombat() throws DeathException {
 		System.out.println("Vous êtes maintenent dans un combat contre " + monster.getName());
-		player.afficherStats();
+		player.afficherStats(System.out);
 		while (true) {
 			prompt();
 			if (player.isDead())
@@ -55,7 +55,7 @@ public class CombatManager {
 		commande = commande.toUpperCase();
 		
 		if (commande.matches("AIDE"))
-			player.listeAttaque();
+			player.listeAttaque(System.out);
 		else
 			lancerAttaque(commande);
 	}
