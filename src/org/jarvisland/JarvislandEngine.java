@@ -70,10 +70,8 @@ public class JarvislandEngine {
 	 * @throws RoomNotAccessibleException
 	 */
 	private void put(String s) {
-		if (s.length() == 0)
-			printStream.println("Commande invalide.");
-		else
-			printStream.println(s);
+		s = s.length() == 0 ? "Commande invalide." : s;
+		printStream.println(s);
 		prompt();
 	}
 
