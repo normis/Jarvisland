@@ -1,17 +1,17 @@
 package org.jarvisland.attaque.atom;
 
-import org.jarvisland.attaque.TypeAttaque;
+import org.jarvisland.attaque.AttaqueTemplate;
 
-public class AttaqueAtomType2 extends TypeAttaque{
+public class Blizzard extends AttaqueTemplate{
 
 	@Override
 	public int getDommage() {
-		return 5;
+		return 6;
 	}
 
 	@Override
 	public String getDescription() {
-		return "Leaser Beam";
+		return "Blizzard";
 	}
 
 }

@@ -1,9 +1,9 @@
 package org.jarvisland.lifeform;
 
-import org.jarvisland.attaque.Attaque;
-import org.jarvisland.attaque.atom.AttaqueAtomType1;
-import org.jarvisland.attaque.atom.AttaqueAtomType2;
-import org.jarvisland.attaque.atom.AttaqueAtomType3;
+import org.jarvisland.attaque.AttaqueTemplate;
+import org.jarvisland.attaque.atom.Blizzard;
+import org.jarvisland.attaque.atom.ForkBomb;
+import org.jarvisland.attaque.atom.LaserBeam;
 
 public class AtomMonster extends Monster {
 
@@ -14,19 +14,19 @@ public class AtomMonster extends Monster {
 	}
 
 	@Override
-	public Attaque getRandomAttaque() {
+	public AttaqueTemplate getRandomAttaque() {
 		int randomNum = 1 + (int) (Math.random() * nbAttaque);
-		Attaque attaque = null;
+		AttaqueTemplate attaque = null;
 
 		switch (randomNum) {
 		case 1:
-			attaque = new AttaqueAtomType1();
+			attaque = new ForkBomb();
 			break;
 		case 2:
-			attaque = new AttaqueAtomType2();
+			attaque = new LaserBeam();
 			break;
 		default:
-			attaque = new AttaqueAtomType3();
+			attaque = new Blizzard();
 		}
 
 		return attaque;

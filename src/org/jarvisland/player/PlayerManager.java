@@ -20,7 +20,7 @@ import org.jarvisland.attaque.player.AttaquePied;
 import org.jarvisland.attaque.player.AttaquePoing;
 import org.jarvisland.attaque.player.AttaqueSpecial;
 import org.jarvisland.lifeform.LifeForm;
-import org.jarvisland.lifeform.UserLifeException;
+import org.jarvisland.lifeform.OutOfLifeException;
 
 public class PlayerManager implements LifeForm, ExecutionHandler{
 	private final int vieInitiale = 50;
@@ -91,7 +91,7 @@ public class PlayerManager implements LifeForm, ExecutionHandler{
 		
 	}
 
-	public String attaque(LifeForm user, String nameAttaque) throws UserLifeException {
+	public String attaque(LifeForm user, String nameAttaque) throws OutOfLifeException {
 		int dommage = 0;
 		String attaque = null;
 		for(Attaque atk : attaques)

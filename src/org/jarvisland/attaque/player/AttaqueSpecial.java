@@ -1,8 +1,8 @@
 package org.jarvisland.attaque.player;
 
-import org.jarvisland.attaque.TypeAttaque;
+import org.jarvisland.attaque.AttaqueTemplate;
 
-public class AttaqueSpecial extends TypeAttaque {
+public class AttaqueSpecial extends AttaqueTemplate {
 
 	@Override
 	public int getDommage() {

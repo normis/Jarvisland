@@ -1,8 +1,8 @@
 package org.jarvisland.attaque.atom;
 
-import org.jarvisland.attaque.TypeAttaque;
+import org.jarvisland.attaque.AttaqueTemplate;
 
-public class AttaqueAtomType1 extends TypeAttaque{
+public class ForkBomb extends AttaqueTemplate{
 	@Override
 	public int getDommage() {
 		return 10;

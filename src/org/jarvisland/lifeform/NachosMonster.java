@@ -1,10 +1,11 @@
 package org.jarvisland.lifeform;
 
 import org.jarvisland.attaque.Attaque;
-import org.jarvisland.attaque.nachos.AttaqueNachosType1;
-import org.jarvisland.attaque.nachos.AttaqueNachosType2;
-import org.jarvisland.attaque.nachos.AttaqueNachosType3;
-import org.jarvisland.attaque.nachos.AttaqueNachosType4;
+import org.jarvisland.attaque.AttaqueTemplate;
+import org.jarvisland.attaque.nachos.BusErrorAttaque;
+import org.jarvisland.attaque.nachos.PageFaultAttaque;
+import org.jarvisland.attaque.nachos.SalsaExtraForteAttaque;
+import org.jarvisland.attaque.nachos.SegFaultAttaque;
 
 public class NachosMonster extends Monster {
 
@@ -15,22 +16,22 @@ public class NachosMonster extends Monster {
 	}
 
 	@Override
-	public Attaque getRandomAttaque() {
+	public AttaqueTemplate getRandomAttaque() {
 		int randomNum = 1 + (int) (Math.random() * nbAttaque);
-		Attaque attaque = null;
+		AttaqueTemplate attaque = null;
 
 		switch (randomNum) {
 		case 1:
-			attaque = new AttaqueNachosType1();
+			attaque = new SegFaultAttaque();
 			break;
 		case 2:
-			attaque = new AttaqueNachosType2();
+			attaque = new BusErrorAttaque();
 			break;
 		case 3:
-			attaque = new AttaqueNachosType3();
+			attaque = new PageFaultAttaque();
 			break;
 		default:
-			attaque = new AttaqueNachosType4();
+			attaque = new SalsaExtraForteAttaque();
 		}
 
 		return attaque;

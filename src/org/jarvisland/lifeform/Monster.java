@@ -1,6 +1,6 @@
 package org.jarvisland.lifeform;
 
-import org.jarvisland.attaque.Attaque;
+import org.jarvisland.attaque.AttaqueTemplate;
 
 public abstract class Monster implements LifeForm{
 
@@ -36,23 +36,23 @@ public abstract class Monster implements LifeForm{
 		vie = baseLife;
 	}
 
-	public String attaque(LifeForm user, String nameAttaque) throws UserLifeException {
-			Attaque attaque = getRandomAttaque();
-			attaque.attaque(user, attaque);
+	public String attaque(LifeForm user, String nameAttaque) throws OutOfLifeException {
+			AttaqueTemplate attaque = getRandomAttaque();
+			attaque.attaquer(user);
 			return getName() + " a utiliser l'attaque " + attaque.getDescription();
 	}
 	
-	public abstract Attaque getRandomAttaque();
+	public abstract AttaqueTemplate getRandomAttaque();
 
 	@Override
-	public void dropLife(int loseLife) throws UserLifeException {
+	public void dropLife(int loseLife) throws OutOfLifeException {
 		if(!isDead()){
 			vie = vie - loseLife;
 			if(vie < 0)
 				vie = 0;
 		}
 		else
-			throw new UserLifeException("L'usager " + getName() + " est déjà mort");
+			throw new OutOfLifeException("L'usager " + getName() + " est déjà mort");
 	}
 
 	@Override

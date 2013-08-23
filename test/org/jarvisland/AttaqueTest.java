@@ -5,51 +5,53 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import org.jarvisland.attaque.Attaque;
-import org.jarvisland.attaque.nachos.AttaqueNachosType1;
+import org.jarvisland.attaque.AttaqueTemplate;
+import org.jarvisland.attaque.nachos.SegFaultAttaque;
 import org.jarvisland.lifeform.LifeForm;
 import org.jarvisland.lifeform.MonsterFactory;
 import org.jarvisland.lifeform.NachosMonsterFactory;
-import org.jarvisland.lifeform.UserLifeException;
-import org.jarvisland.player.PlayerManager;
+import org.jarvisland.lifeform.OutOfLifeException;
 import org.junit.Test;
 
 public class AttaqueTest {
 	
 	@Test
 	public void testAttaqueConstructor() {
-		Attaque attaque = new AttaqueNachosType1();
+		Attaque attaque = new SegFaultAttaque();
 		assertTrue(attaque.getDommage() == 15);
 		assertTrue(attaque.getDescription().equals("Segmentation Fault"));
 	}
 	
 	@Test
 	public void testAttaque() {
-		Attaque attaque = new AttaqueNachosType1();
+		AttaqueTemplate attaque = new SegFaultAttaque();
 		MonsterFactory mf = new NachosMonsterFactory();
 		LifeForm monsterTest = mf.getMonstre();
 		
 		try {
-			attaque.attaque(monsterTest, attaque);
+			attaque.attaquer(monsterTest);
 			assertEquals(135, monsterTest.getVie());
-		} catch (UserLifeException e) {
+		} catch (OutOfLifeException e) {
 			fail();
 		}
 	}
 	
 	@Test
 	public void testOverAttaque() {
-		Attaque attaque = new AttaqueNachosType1();
+		AttaqueTemplate attaque = new SegFaultAttaque();
 		MonsterFactory mf = new NachosMonsterFactory();
 		LifeForm monsterTest = mf.getMonstre();
 		
 		try {
-			attaque.attaque(monsterTest, attaque);
-			attaque.attaque(monsterTest, attaque);
-			attaque.attaque(monsterTest, attaque);
-			attaque.attaque(monsterTest, attaque);
-			attaque.attaque(monsterTest, attaque);
-			attaque.attaque(monsterTest, attaque);
-		} catch (UserLifeException e) {
+			attaque.attaquer(monsterTest);
+			attaque.attaquer(monsterTest);
+			attaque.attaquer(monsterTest);
+			attaque.attaquer(monsterTest);
+			attaque.attaquer(monsterTest);
+			attaque.attaquer(monsterTest);
+			attaque.attaquer(monsterTest);
+			attaque.attaquer(monsterTest);
+		} catch (OutOfLifeException e) {
 			fail();
 		}
 	}

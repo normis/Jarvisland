@@ -1,8 +1,8 @@
 package org.jarvisland.attaque.nachos;
 
-import org.jarvisland.attaque.TypeAttaque;
+import org.jarvisland.attaque.AttaqueTemplate;
 
-public class AttaqueNachosType1 extends TypeAttaque {
+public class SegFaultAttaque extends AttaqueTemplate {
 
 	@Override
 	public int getDommage() {

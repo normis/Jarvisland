@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 
 import org.jarvisland.lifeform.Monster;
-import org.jarvisland.lifeform.UserLifeException;
+import org.jarvisland.lifeform.OutOfLifeException;
 import org.jarvisland.player.DeathException;
 import org.jarvisland.player.PlayerManager;
 
@@ -46,7 +46,7 @@ public class CombatManager {
 						+ "\t Vie du monstre : " + monster.getVie());
 			} else
 				put("L'attaque n'existe pas");
-		} catch (UserLifeException e) {
+		} catch (OutOfLifeException e) {
 			System.out.println(e);
 		}
 	}
